@@ -47,3 +47,5 @@ Route::get('employees','App\Http\Controllers\EmployeeController@getEmployee');
 Route::get('employees/{id}','App\Http\Controllers\EmployeeController@getEmployeeId');
 Route::post('addEmployees','App\Http\Controllers\EmployeeController@addEmployee');
 Route::get('updateEmployees','App\Http\Controllers\EmployeeController@updateEmploye');
+
+Route::post('addPersonEmployees','App\Http\Controllers\EmployeeController@addPersonaEmpleado');
