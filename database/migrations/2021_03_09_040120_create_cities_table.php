@@ -17,8 +17,8 @@ class CreateCitiesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('detail')->nullable();
-            $table->unsignedBigInteger('departamet_id');
-            $table->foreign('departamet_id')->references('id')->on('departaments');
+            $table->unsignedBigInteger('departament_id');
+            $table->foreign('departament_id')->references('id')->on('departaments');
         });
     }
 

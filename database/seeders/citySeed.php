@@ -19,7 +19,7 @@ class citySeed extends Seeder
         {
             city::create([
                 'id' => $data[1],
-                'departamet_id' => $data[0],
+                'departament_id' => $data[0],
                 'name' => $data[2]
             ]);
 

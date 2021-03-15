@@ -12,4 +12,8 @@ class departament extends Model
     ];
     public $timestamps = false;
     public $incrementing = false;
+
+    public function cities(){
+        return $this->hasMany('App\Models\city');
+    }
 }

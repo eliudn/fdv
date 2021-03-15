@@ -12,4 +12,10 @@ class city extends Model
     ];
     public $timestamps = false;
     public $incrementing = false;
+
+
+    public function  departament()
+    {
+        return $this->belongsTo('App\Models\departament');
+    }
 }

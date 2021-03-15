@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\city;
+
 
 class Employee extends Model
 {
@@ -19,4 +21,7 @@ class Employee extends Model
             'user_id',
 
         ];
+
+
+
 }

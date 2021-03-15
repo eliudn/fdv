@@ -10,8 +10,8 @@ use App\Models\documentType;
 class LocationController extends Controller
 {
     public function getDepartaments(){
-
-        return response()->json(departament::all(),200);
+        $departament = departament::all();
+        return response()->json($departament,200);
     }
 
     public function getDepartamentId($id){
@@ -19,7 +19,7 @@ class LocationController extends Controller
         if (is_null($departament)){
             return response()->json(['Message'=>'not found'],404);
         }
-        return response()->json($departament::find($id),200);
+        return response()->json($departament->cities,200);
     }
     public function getCities($id){
 

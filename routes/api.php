@@ -37,8 +37,8 @@ Route::put('updateArea','App\Http\Controllers\SedeController@updateArea');
 
 // Localisacion
 Route::get('region','App\Http\Controllers\LocationController@getDepartaments');
-Route::get('regionid/{id}','App\Http\Controllers\LocationController@getDepartamentId');
-Route::get('cities/{id}','App\Http\Controllers\LocationController@getCities');
+Route::get('region/{id}','App\Http\Controllers\LocationController@getDepartamentId');
+
 
 Route::get('documentType','App\Http\Controllers\LocationController@getDocumentType');
 
