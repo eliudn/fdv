@@ -43,8 +43,8 @@ Route::get('region/{id}','App\Http\Controllers\LocationController@getDepartament
 Route::get('document_type','App\Http\Controllers\LocationController@getDocumentType');
 
 // Empleado
-Route::get('employees','App\Http\Controllers\EmployeeController@getEmployee');
+Route::get('employee','App\Http\Controllers\EmployeeController@getEmployee');
 Route::get('employee/{id}','App\Http\Controllers\EmployeeController@getEmployeeId');
 //Route::post('Employees','App\Http\Controllers\EmployeeController@addEmployee');
-Route::get('employees','App\Http\Controllers\EmployeeController@updateEmploye');
+Route::put('employee','App\Http\Controllers\EmployeeController@updateEmploye');
 Route::post('employee','App\Http\Controllers\EmployeeController@addPersonaEmpleado');
