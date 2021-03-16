@@ -17,8 +17,8 @@ class SedeController extends Controller
         if (is_null($sede)){
             return response()->json(['Message'=>'not found'],404);
         }
-        $sede->areas;
-        return response()->json($sede,200);
+
+        return response()->json($sede->areas,200);
     }
 
     public function addSede(Request $request){
