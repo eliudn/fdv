@@ -25,27 +25,26 @@ Route::post('Person','App\Http\Controllers\PersonController@addPerson');
 Route::put('Person','App\Http\Controllers\PersonController@updatePerson');
 
 //sede area
-Route::get('Sedes','App\Http\Controllers\SedeController@getSede');
-Route::get('Sede/{id}','App\Http\Controllers\SedeController@getSedeId');
-Route::post('Sede','App\Http\Controllers\SedeController@addSede');
-Route::put('Sede','App\Http\Controllers\SedeController@updateSede');
+Route::get('sedes','App\Http\Controllers\SedeController@getSede');
+Route::get('sede/{id}','App\Http\Controllers\SedeController@getSedeId');
+Route::post('sede','App\Http\Controllers\SedeController@addSede');
+Route::put('sede','App\Http\Controllers\SedeController@updateSede');
 
-Route::get('Areas','App\Http\Controllers\SedeController@getArea');
-Route::get('Area/{id}','App\Http\Controllers\SedeController@getAreaId');
-Route::post('Area','App\Http\Controllers\SedeController@addArea');
-Route::put('Area','App\Http\Controllers\SedeController@updateArea');
+Route::get('areas','App\Http\Controllers\SedeController@getArea');
+Route::get('area/{id}','App\Http\Controllers\SedeController@getAreaId');
+Route::post('area','App\Http\Controllers\SedeController@addArea');
+Route::put('area','App\Http\Controllers\SedeController@updateArea');
 
 // Localisacion
-Route::get('Region','App\Http\Controllers\LocationController@getDepartaments');
-Route::get('Region/{id}','App\Http\Controllers\LocationController@getDepartamentId');
+Route::get('region','App\Http\Controllers\LocationController@getDepartaments');
+Route::get('region/{id}','App\Http\Controllers\LocationController@getDepartamentId');
 
 
-Route::get('documentType','App\Http\Controllers\LocationController@getDocumentType');
+Route::get('document_type','App\Http\Controllers\LocationController@getDocumentType');
 
 // Empleado
 Route::get('employees','App\Http\Controllers\EmployeeController@getEmployee');
 Route::get('employee/{id}','App\Http\Controllers\EmployeeController@getEmployeeId');
-Route::post('Employees','App\Http\Controllers\EmployeeController@addEmployee');
-Route::get('Employees','App\Http\Controllers\EmployeeController@updateEmploye');
-
-Route::post('PersonEmployees','App\Http\Controllers\EmployeeController@addPersonaEmpleado');
+//Route::post('Employees','App\Http\Controllers\EmployeeController@addEmployee');
+Route::get('employees','App\Http\Controllers\EmployeeController@updateEmploye');
+Route::post('employee','App\Http\Controllers\EmployeeController@addPersonaEmpleado');

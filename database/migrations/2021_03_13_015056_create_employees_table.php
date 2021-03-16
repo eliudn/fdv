@@ -23,6 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->date('retirement_date')->nullable()->nulcomment('fecha de salida');
             $table->integer('salary')->comment('salario');
             $table->unsignedBigInteger('position_id')->comment('id de cargo');
+            $table->foreign('position_id')->references('id')->on('position');
             $table->unsignedBigInteger('user_id')->comment('id usuario');
             $table->foreign('user_id')->references('id')->on('users');
             $table->boolean('state')->default(true);

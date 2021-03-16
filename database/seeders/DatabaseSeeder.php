@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(documentTypeSeed::class);
         $this->call(sedeSeed::class);
         $this->call(areaSeed::class);
+        $this->call(positionSeed::class);
     }
 }

@@ -9,7 +9,15 @@ class EmployeeController extends Controller
 {
     public function getEmployee()
     {
-        return response()->json(Employee::all(),200);
+        $employee =Employee::all();
+        foreach ($employee as $e){
+            $e->position;
+            $e->area;
+            $e->person;
+            $e->user;
+        }
+
+        return response()->json($employee,200);
     }
     public function getEmployeeId($id)
     {
@@ -18,7 +26,11 @@ class EmployeeController extends Controller
         {
             return response()->json(['Message'=>'not found'],404);
         }
+        $employee->position;
+        $employee->area;
         $employee->person;
+        $employee->user;
+
         return response()->json($employee,200);
     }
 
@@ -61,7 +73,7 @@ class EmployeeController extends Controller
             );
         }
         $Employe = Employee::find($Employee->id);
-        $Employe->persons;
+        $Employe->person;
         return response($Employe,200);
 
     }
