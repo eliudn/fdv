@@ -17,5 +17,11 @@ class Sede extends Model
             'coordinador'
         ];
 
+    public  function areas()
+    {
+        return $this->hasMany('App\Models\Area');
+
+    }
+
 
 }

@@ -17,4 +17,8 @@ class Area extends Model
 
         ];
     public $timestamps = false;
+
+    public function sede(){
+        return $this->belongsTo('App/Models/Sede');
+    }
 }

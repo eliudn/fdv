@@ -18,11 +18,13 @@ class EmployeeController extends Controller
         {
             return response()->json(['Message'=>'not found'],404);
         }
-        return response()->json($employee::find($id),200);
+        $employee->person;
+        return response()->json($employee,200);
     }
 
     public function  addEmployee(Request $request){
         $Employee = Employee::create($request->all());
+
         return response($Employee,200);
     }
 
@@ -58,7 +60,9 @@ class EmployeeController extends Controller
             ]
             );
         }
-        return response($Employee,200);
+        $Employe = Employee::find($Employee->id);
+        $Employe->persons;
+        return response($Employe,200);
 
     }
 

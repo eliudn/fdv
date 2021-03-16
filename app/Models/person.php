@@ -25,4 +25,9 @@ class person extends Model
             'user_id'
 
         ];
+
+    public function employee()
+    {
+        return $this->hasOne('App\Models\Employee');
+    }
 }

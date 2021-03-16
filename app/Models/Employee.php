@@ -21,7 +21,10 @@ class Employee extends Model
             'user_id',
 
         ];
+    public function person(){
 
+        return $this->belongsTo('App\Models\person');
+    }
 
 
 }
