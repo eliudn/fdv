@@ -19,18 +19,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 // Pesona
-Route::get('persons','App\Http\Controllers\PersonController@getPerson');
+Route::get('person','App\Http\Controllers\PersonController@getPerson');
 Route::get('person/{id}','App\Http\Controllers\PersonController@getPersonId');
 Route::post('Person','App\Http\Controllers\PersonController@addPerson');
 Route::put('Person','App\Http\Controllers\PersonController@updatePerson');
 
 //sede area
-Route::get('sedes','App\Http\Controllers\SedeController@getSede');
+Route::get('sede','App\Http\Controllers\SedeController@getSede');
 Route::get('sede/{id}','App\Http\Controllers\SedeController@getSedeId');
 Route::post('sede','App\Http\Controllers\SedeController@addSede');
 Route::put('sede','App\Http\Controllers\SedeController@updateSede');
 
-Route::get('areas','App\Http\Controllers\SedeController@getArea');
+Route::get('area','App\Http\Controllers\SedeController@getArea');
 Route::get('area/{id}','App\Http\Controllers\SedeController@getAreaId');
 Route::post('area','App\Http\Controllers\SedeController@addArea');
 Route::put('area','App\Http\Controllers\SedeController@updateArea');
