@@ -20,6 +20,7 @@ class EmployeeController extends Controller
             ->join('position as p', 'position_id','p.id')
             ->join('cities as cy', 'pe.place_issue', 'cy.id')
             ->join('cities as cy2','pe.city_id','cy2.id')
+            ->where('employees.state','<>',false)
             ->get();
        /**
         foreach ($employee as $e){
@@ -31,13 +32,17 @@ class EmployeeController extends Controller
 
         return response()->json($employee,200);
     }
+
+
     public function getEmployeeId($id)
     {
-        $employee =Employee::find($id);
+        $employee =Employee::where('state','true')->find($id);
+
         if(is_null($employee))
         {
             return response()->json(['Message'=>'not found'],404);
         }
+
         $employee->position;
         $employee->area;
         $employee->person;
@@ -54,49 +59,84 @@ class EmployeeController extends Controller
 
     public function addPersonaEmpleado(Request $request)
     {
-        $person = person::create(
-            [
+         $id_number =Person::where('id_number',$request->id_number)->get();
+        if(
+            $request->name1 == '' ||$request->last_name1 == '' ||
+            $request->id_number == ''|| $request->document_type_id ==''||
+            $request->blood_type == '' || $request->city_id=='' ||
+            $request->user_id == '' || $request->area_id == '' ||
+            $request->date_entry == '' || $request->salary == '' ||
+            $request->position_id == ''
+        ){
+            return response()->json(['Message'=>'Faltan datos para realizar el registro de informacion'],404);
+        }else{
+            if(!$id_number){
+                $person = person::create(
+                    [
+                        'name1' => $request->name1,
+                        'name2' => $request->name2,
+                        'last_name1' => $request->last_name1,
+                        'last_name2' => $request->last_name2,
+                        'id_number' => $request->id_number,
+                        'document_type_id' => $request->document_type_id,
+                        'date_issue' => $request->date_issue,
+                        'place_issue' => $request->place_issue,
+                        'blood_type' => $request->blood_type,
+                        'marital_status' => $request->marital_status,
+                        'city_id' => $request->city_id,
+                        'user_id' => $request->user_id
+                    ]
+                );
+                if(!is_null($person)){
+                    $Employee = Employee::create(
+                        [
+                            'person_id'=>$person->id,
+                            'area_id'=>$request->area_id,
+                            'date_entry'=>$request->date_entry,
+                            'retirement_date'=>$request->retirement_date,
+                            'salary'=>$request->salary,
+                            'position_id'=>$request->position_id,
+                            'user_id'=>$request->user_id,
+                        ]
+                    );
+                }
+            }else{
+                return response()->json(['Message'=>'La cedula se encuentra registrada'],404);
+            }
 
-                'name1' => $request->name1,
-                'name2' => $request->name2,
-                'last_name1' => $request->last_name1,
-                'last_name2' => $request->last_name2,
-                'id_number' => $request->id_number,
-                'document_type_id' => $request->document_type_id,
-                'date_issue' => $request->date_issue,
-                'place_issue' => $request->place_issue,
-                'blood_type' => $request->blood_type,
-                'marital_status' => $request->marital_status,
-                'city_id' => $request->city_id,
-                'user_id' => $request->user_id
-            ]
-        );
-        if(!is_null($person)){
-            $Employee = Employee::create(
-            [
-                'person_id'=>$person->id,
-                'area_id'=>$request->area_id,
-                'date_entry'=>$request->date_entry,
-                'retirement_date'=>$request->retirement_date,
-                'salary'=>$request->salary,
-                'position_id'=>$request->position_id,
-                'user_id'=>$request->user_id,
-            ]
-            );
         }
+
         $Employe = Employee::find($Employee->id);
         $Employe->person;
         return response($Employe,200);
 
     }
 
-    public function updateEmployee(Request $reques, $id){
+    public function updateEmployee(Request $request, $id){
         $Employee = Employee::find($id);
+        if( $request->name1 == '' ||$request->last_name1 == '' ||
+            $request->id_number == ''|| $request->document_type_id ==''||
+            $request->blood_type == '' || $request->city_id=='' ||
+            $request->user_id == '' || $request->area_id == '' ||
+            $request->date_entry == '' || $request->salary == '' ||
+            $request->position_id == ''
+        ){
+
+        }
         if(is_null($Employee))
         {
             return response()->json(['Message'=>'not found'],404);
         }
-        $Employee->update($reques->all());
+        $Employee->update(
+                            [
+                                'area_id'=>$request->area_id,
+                                'date_entry'=>$request->date_entry,
+                                'retirement_date'=>$request->retirement_date,
+                                'salary'=>$request->salary,
+                                'position_id'=>$request->position_id
+
+                            ]
+        );
         return  response($Employee,200);
     }
 }
