@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\position;
+
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\person;
+use Illuminate\Support\Facades\Validator;
+
 class EmployeeController extends Controller
 {
     public function getEmployee()
@@ -59,18 +62,28 @@ class EmployeeController extends Controller
 
     public function addPersonaEmpleado(Request $request)
     {
-         $id_number =Person::where('id_number',$request->id_number)->get();
-        if(
-            $request->name1 == '' ||$request->last_name1 == '' ||
-            $request->id_number == ''|| $request->document_type_id ==''||
-            $request->blood_type == '' || $request->city_id=='' ||
-            $request->user_id == '' || $request->area_id == '' ||
-            $request->date_entry == '' || $request->salary == '' ||
-            $request->position_id == ''
-        ){
-            return response()->json(['Message'=>'Faltan datos para realizar el registro de informacion'],404);
-        }else{
-            if(!$id_number){
+
+            $rules=array(
+                "name1"=>"required|string",
+                "name2"=>"string",
+                "last_name1"=>"required|string",
+                "last_name2"=>"string",
+                "id_number"=>"required|numeric",
+                "document_type_id"=>"required|numeric",
+                "blood_type"=> "required|string",
+                "city_id"=>"required|numeric",
+                "user_id"=>"required|string",
+                "area_id"=>"required|string",
+                "date_entry"=>"required|string",
+                "salary" =>"required|numeric",
+                "position_id" =>"required|numeric",
+            );
+            $validator = Validator::make($request->all(),$rules);
+            if($validator->fails()){
+            return $validator->errors();
+            }else{
+            $id_number =Person::where('id_number',$request->id_number)->get();
+            if(count($id_number)==0){
                 $person = person::create(
                     [
                         'name1' => $request->name1,
@@ -101,9 +114,8 @@ class EmployeeController extends Controller
                     );
                 }
             }else{
-                return response()->json(['Message'=>'La cedula se encuentra registrada'],404);
+                return response()->json(['Message'=>'La cedula se encuentra registrada',],401);
             }
-
         }
 
         $Employe = Employee::find($Employee->id);
@@ -111,32 +123,183 @@ class EmployeeController extends Controller
         return response($Employe,200);
 
     }
-
-    public function updateEmployee(Request $request, $id){
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function updateEmployee($id,Request $request){
         $Employee = Employee::find($id);
-        if( $request->name1 == '' ||$request->last_name1 == '' ||
-            $request->id_number == ''|| $request->document_type_id ==''||
-            $request->blood_type == '' || $request->city_id=='' ||
-            $request->user_id == '' || $request->area_id == '' ||
-            $request->date_entry == '' || $request->salary == '' ||
-            $request->position_id == ''
-        ){
-
-        }
+        $rules=array(
+            'name1'=>'required|string',
+            'name2'=>'string',
+            'last_name1'=>'required|string',
+            'last_name2'=>'string',
+           // 'id_number'=>'required|numeric',
+            'document_type_id'=>'required|numeric',
+            'blood_type'=> 'required|string',
+            'city_id'=>'required|numeric',
+            //'user_id'=>'required|string',
+            'area_id'=>'required|numeric',
+            'date_entry'=>'required|string',
+            'salary' =>'required|numeric',
+            'position_id' =>'required|numeric',
+        );
         if(is_null($Employee))
         {
-            return response()->json(['Message'=>'not found'],404);
+            return response()->json(['Message'=>'not found'],401);
         }
-        $Employee->update(
-                            [
-                                'area_id'=>$request->area_id,
-                                'date_entry'=>$request->date_entry,
-                                'retirement_date'=>$request->retirement_date,
-                                'salary'=>$request->salary,
-                                'position_id'=>$request->position_id
+        $validator = Validator::make($request->all(),$rules);
+        if($validator->fails()){
+            return $validator->errors();
+        }else{
 
-                            ]
-        );
-        return  response($Employee,200);
+            $person = person::find($Employee->person_id);
+            $Employee->update(
+                [
+                    'area_id'=>$request->area_id,
+                    'date_entry'=>$request->date_entry,
+                    'retirement_date'=>$request->retirement_date,
+                    'salary'=>$request->salary,
+                    'position_id'=>$request->position_id
+
+                ]
+            );
+            if($person){
+                $person->update([
+                    'name1' => $request->name1,
+                    'name2' => $request->name2,
+                    'last_name1' => $request->last_name1,
+                    'last_name2' => $request->last_name2,
+                    'id_number' => $request->id_number,
+                    'document_type_id' => $request->document_type_id,
+                    'date_issue' => $request->date_issue,
+                    'place_issue' => $request->place_issue,
+                    'blood_type' => $request->blood_type,
+                    'marital_status' => $request->marital_status,
+                    'city_id' => $request->city_id
+                ]);
+            }
+
+        }
+        $Employee->person;
+        return response($Employee,200);
+
     }
+
+    public function update($id,Request $request){
+        $employee = Employee::find($id);
+        if(!$employee)
+        {
+            return response()->json(['Message'=>'not found'],401);
+        }
+        //persons
+        $name1 = $request->name1;
+        $name2 = $request->name2;
+        $last_name1 = $request->last_name1;
+        $last_name2 = $request->last_name2;
+        $id_number = $request->id_number;
+        $document_type_id = $request->document_type_id;
+        $date_issue = $request->date_issue;
+        $place_issue = $request->place_issue;
+        $blood_type = $request->blood_type;
+        $marital_status = $request->marital_status;
+        $city_id = $request->city_id;
+
+        //Empleado
+        $area_id=$request->area_id;
+        $date_entry=$request->date_entry;
+        $retirement_date=$request->retirement_date;
+        $salary=$request->salary;
+        $position_id=$request->position_id;
+
+        if($request->method()=='PATCH'){
+            $person = person::find($employee->person_id);
+            $bandera=False;
+            if($name1){
+                $person->name1=$name1;
+                $bandera=true;
+            }
+            if($name2){
+                $person->name2=$name2;
+                $bandera=true;
+            }
+            if($last_name1!=null || $last_name1!=''){
+                $person->last_name1=$last_name1;
+                $bandera=true;
+            }
+            if($last_name2!=null || $last_name2!=''){
+                $person->last_name2=$last_name2;
+                $bandera=true;
+            }
+            if($id_number!=null || $id_number!=''){
+                $person->id_number=$id_number;
+                $bandera=true;
+            }
+            if($document_type_id!=null || $document_type_id!=''){
+                $person->document_type_id=$document_type_id;
+                $bandera=true;
+            }
+            if($date_issue!=null || $date_issue!=''){
+                $person->date_issue=$date_issue;
+                $bandera=true;
+            }
+            if($place_issue!=null || $place_issue){
+                $person->place_issue=$place_issue;
+                $bandera=true;
+            }
+            if($blood_type!=null || $blood_type!=''){
+                $person->blood_type=$place_issue;
+                $bandera=true;
+            }
+            if($marital_status!= null || $marital_status!=''){
+                $person->marital_status=$marital_status;
+                $bandera=true;
+            }
+            if($city_id!=null || $city_id!=''){
+                $person->city_id=$city_id;
+                $bandera=true;
+            }
+
+            if($area_id!=null || $area_id!=''){
+                $employee->area_id=$area_id;
+                $bandera=true;
+            }
+            if($date_entry!=null || $date_entry!= ''){
+                $employee->date_entry=$date_entry;
+                $bandera=true;
+            }
+            if($retirement_date!=null || $retirement_date!=''){
+                $employee->retirement_date=$retirement_date;
+                $bandera=true;
+            }
+            if($salary!=null || $salary!=''){
+                $employee->salary=$salary;
+                $bandera=true;
+            }
+
+            if($position_id!=null || $position_id!=''){
+                $employee->position_id=$position_id;
+                $bandera=true;
+            }
+            if($bandera){
+                $person->save();
+                $employee->save();
+
+                $employee->person;
+
+                return response($employee,200);
+
+            }else
+                {
+
+                return response()->json(['errors'=>array([
+                    'code'=>304,'message'=>'No se ha modificado ningún dato de empleado.'
+                    ,'data'=>$request->name1])],305);
+            }
+        }
+        
+
+    
 }

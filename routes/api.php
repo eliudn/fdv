@@ -46,5 +46,7 @@ Route::get('document_type','App\Http\Controllers\LocationController@getDocumentT
 Route::get('employee','App\Http\Controllers\EmployeeController@getEmployee');
 Route::get('employee/{id}','App\Http\Controllers\EmployeeController@getEmployeeId');
 //Route::post('Employees','App\Http\Controllers\EmployeeController@addEmployee');
-Route::put('employee','App\Http\Controllers\EmployeeController@updateEmploye');
+Route::put('employeeu/{id}','App\Http\Controllers\EmployeeController@updateEmployee');
+Route::patch('employee/{id}','App\Http\Controllers\EmployeeController@update');
+
 Route::post('employee','App\Http\Controllers\EmployeeController@addPersonaEmpleado');
