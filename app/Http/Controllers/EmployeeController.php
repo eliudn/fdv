@@ -13,7 +13,9 @@ class EmployeeController extends Controller
 {
     public function getEmployee()
     {
-        $employee =Employee::select('employees.id','pe.name1','pe.name2',
+
+        $employee = Employee::all()->where('state',true);
+        /*$employee =Employee::select('employees.id','pe.name1','pe.name2',
             'pe.last_name1','pe.last_name2','doty.detail as document_type','pe.id_number',
             'cy.name as place_issue','pe.date_issue','a.name as area','p.name as position',
             'blood_type','marital_status', 'date_entry','retirement_date','salary','cy2.name as city','employees.state')
@@ -24,14 +26,14 @@ class EmployeeController extends Controller
             ->join('cities as cy', 'pe.place_issue', 'cy.id')
             ->join('cities as cy2','pe.city_id','cy2.id')
             ->where('employees.state',true)
-            ->get();
-       /**
+            ->get();*/
+
         foreach ($employee as $e){
             $e->position;
             $e->area;
             $e->person;
             $e->user;
-        }*/
+        }
 
         return response()->json($employee,200);
     }
