@@ -65,7 +65,7 @@ class EmployeeController extends Controller
 
             $rules=array(
                 "name1"=>"required|string",
-                "name2"=>"string",
+                //"name2"=>"string",
                 "last_name1"=>"required|string",
                 "last_name2"=>"string",
                 "id_number"=>"required|numeric",
