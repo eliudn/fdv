@@ -72,8 +72,8 @@ class EmployeeController extends Controller
                 "document_type_id"=>"required|numeric",
                 "blood_type"=> "required|string",
                 "city_id"=>"required|numeric",
-                "user_id"=>"required|string",
-                "area_id"=>"required|string",
+                "user_id"=>"required|numeric",
+                "area_id"=>"required|numeric",
                 "date_entry"=>"required|string",
                 "salary" =>"required|numeric",
                 "position_id" =>"required|numeric",
@@ -299,7 +299,7 @@ class EmployeeController extends Controller
                     ,'data'=>$request->name1])],305);
             }
         }
-        
+
 
     }
 }

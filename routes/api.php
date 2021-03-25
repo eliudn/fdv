@@ -50,3 +50,8 @@ Route::put('employeeu/{id}','App\Http\Controllers\EmployeeController@updateEmplo
 Route::patch('employee/{id}','App\Http\Controllers\EmployeeController@update');
 
 Route::post('employee','App\Http\Controllers\EmployeeController@addPersonaEmpleado');
+
+//Usuario
+Route::post('user','App\Http\Controllers\UserController@store');
+Route::get('user','App\Http\Controllers\UserController@all');
+Route::post('login','App\Http\Controllers\UserController@login');
