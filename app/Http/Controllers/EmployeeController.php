@@ -16,14 +16,14 @@ class EmployeeController extends Controller
         $employee =Employee::select('employees.id','pe.name1','pe.name2',
             'pe.last_name1','pe.last_name2','doty.detail as document_type','pe.id_number',
             'cy.name as place_issue','pe.date_issue','a.name as area','p.name as position',
-            'blood_type','marital_status', 'date_entry','retirement_date','salary','cy2.name as city')
+            'blood_type','marital_status', 'date_entry','retirement_date','salary','cy2.name as city','employees.state')
             ->join('persons as pe','person_id','pe.id')
             ->join('document_types as doty','pe.document_type_id','doty.id' )
             ->join('area as a', 'area_id','a.id')
             ->join('position as p', 'position_id','p.id')
             ->join('cities as cy', 'pe.place_issue', 'cy.id')
             ->join('cities as cy2','pe.city_id','cy2.id')
-            ->where('employees.state','<>',false)
+            ->where('employees.state',true)
             ->get();
        /**
         foreach ($employee as $e){
