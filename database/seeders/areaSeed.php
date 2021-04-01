@@ -15,31 +15,31 @@ class areaSeed extends Seeder
     {
         Area::create(
             [
-                'name'=>'contable1',
+                'name'=>'Contabilidad',
                 'sede_id'=>'1',
             ]
         );
         Area::create(
             [
-                'name'=>'recpcion3',
+                'name'=>'Operativo',
                 'sede_id'=>'3',
             ]
         );
         Area::create(
             [
-                'name'=>'jogistic2',
+                'name'=>'Manofactura',
                 'sede_id'=>'2',
             ]
         );
         Area::create(
             [
-                'name'=>'contable2',
+                'name'=>'Administrativo',
                 'sede_id'=>'2',
             ]
         );
         Area::create(
             [
-                'name'=>'producion1',
+                'name'=>'Operativo',
                 'sede_id'=>'1',
             ]
         );

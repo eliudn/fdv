@@ -15,7 +15,7 @@ class sedeSeed extends Seeder
     {
         Sede::create(
             [
-                'name'=>'Principal',
+                'name'=>'Barranquilla',
                 'city_id'=>'8001',
                 'barrio'=>'barrio1',
                 'address'=>'cll233445',
@@ -23,7 +23,7 @@ class sedeSeed extends Seeder
         );
         Sede::create(
             [
-                'name'=>'sede1',
+                'name'=>'Santa marta',
                 'city_id'=>'11001',
                 'barrio'=>'barrio33',
                 'address'=>'crr3213',
@@ -31,7 +31,7 @@ class sedeSeed extends Seeder
         );
         Sede::create(
             [
-                'name'=>'sede2',
+                'name'=>'bogota',
                 'city_id'=>'8296',
                 'barrio'=>'barrio102',
                 'address'=>'cd33344',

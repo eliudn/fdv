@@ -20,7 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="666f2225-8d2a-4195-a0cc-86b27f68fffb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fuente-verdad.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fuente-verdad.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/areaSeed.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/areaSeed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/sedeSeed.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/sedeSeed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +154,20 @@
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
+      <path value="$PROJECT_DIR$/vendor/league/event" />
+      <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
+      <path value="$PROJECT_DIR$/vendor/laravel/passport" />
+      <path value="$PROJECT_DIR$/vendor/defuse/php-encryption" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
+      <path value="$PROJECT_DIR$/vendor/nyholm/psr7" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
     </include_path>
   </component>
   <component name="ProjectId" id="1pJn3YVGUHWEkjdFB43deMZcFyb" />
@@ -162,6 +187,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -194,7 +220,13 @@
       <workItem from="1616425309440" duration="2494000" />
       <workItem from="1616445226596" duration="10712000" />
       <workItem from="1616552638896" duration="1273000" />
-      <workItem from="1616627252553" duration="4007000" />
+      <workItem from="1616627252553" duration="5341000" />
+      <workItem from="1616950962338" duration="902000" />
+      <workItem from="1616956508169" duration="1227000" />
+      <workItem from="1617069672122" duration="4734000" />
+      <workItem from="1617079422736" duration="4170000" />
+      <workItem from="1617150690774" duration="7002000" />
+      <workItem from="1617245168859" duration="656000" />
     </task>
     <servers />
   </component>
@@ -214,6 +246,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1913" y="93" width="574" height="897" key="#PHP" timestamp="1617080020294">
+      <screen x="1360" y="0" width="1680" height="1050" />
+    </state>
+    <state x="1913" y="93" width="574" height="897" key="#PHP/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1617080020294" />
     <state x="1907" y="310" width="583" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1615742509378">
       <screen x="1360" y="0" width="1680" height="1050" />
     </state>
@@ -226,6 +262,10 @@
       <screen x="1360" y="0" width="1680" height="1050" />
     </state>
     <state x="1933" y="266" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1615868987973" />
+    <state x="1685" y="189" width="1289" height="737" key="SettingsEditor" timestamp="1617079779973">
+      <screen x="1360" y="0" width="1680" height="1050" />
+    </state>
+    <state x="1685" y="189" width="1289" height="737" key="SettingsEditor/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1617079779973" />
     <state x="1864" y="229" key="run.anything.popup" timestamp="1615752473232">
       <screen x="1360" y="0" width="1680" height="1050" />
     </state>

@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +15,9 @@ use App\Http\Controllers;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 // Pesona
 Route::get('person','App\Http\Controllers\PersonController@getPerson');
 Route::get('person/{id}','App\Http\Controllers\PersonController@getPersonId');
@@ -52,6 +52,24 @@ Route::patch('employee/{id}','App\Http\Controllers\EmployeeController@update');
 Route::post('employee','App\Http\Controllers\EmployeeController@addPersonaEmpleado');
 
 //Usuario
+/***
 Route::post('user','App\Http\Controllers\UserController@store');
 Route::get('user','App\Http\Controllers\UserController@all');
-Route::post('login','App\Http\Controllers\UserController@login');
+Route::post('loginx','App\Http\Controllers\UserController@login');
+Route::post('lxgin','App\Http\Controllers\UserController@login');
+*/
+Route::group([
+    'prefix' => 'auth'
+], function () {
+    Route::post('login', 'App\Http\Controllers\UserController@login');
+
+    Route::post('signup', 'App\Http\Controllers\UserController@signUp');
+
+    Route::group([
+        'middleware' => 'auth:api'
+    ], function() {
+        Route::get('logout', 'App\Http\Controllers\UserController@logout');
+        Route::get('user', 'App\Http\Controllers\UserController@all');
+    });
+});
+
