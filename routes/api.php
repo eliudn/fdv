@@ -76,3 +76,4 @@ Route::group([
 });
 
 Route::get('user1', 'App\Http\Controllers\UserController@all');
+Route::post('login1', 'App\Http\Controllers\UserController@login');
