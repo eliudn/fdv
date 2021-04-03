@@ -57,7 +57,9 @@ Route::post('user','App\Http\Controllers\UserController@store');
 Route::get('user','App\Http\Controllers\UserController@all');
 Route::post('loginx','App\Http\Controllers\UserController@login');
 Route::post('lxgin','App\Http\Controllers\UserController@login');
+ *
 */
+
 Route::group([
     'prefix' => 'auth'
 ], function () {
@@ -73,3 +75,4 @@ Route::group([
     });
 });
 
+Route::get('user1', 'App\Http\Controllers\UserController@all');
