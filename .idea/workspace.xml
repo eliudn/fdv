@@ -20,7 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="666f2225-8d2a-4195-a0cc-86b27f68fffb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +38,11 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
@@ -215,7 +226,17 @@
       <workItem from="1617069672122" duration="4734000" />
       <workItem from="1617079422736" duration="4170000" />
       <workItem from="1617150690774" duration="7002000" />
-      <workItem from="1617245168859" duration="4502000" />
+      <workItem from="1617245168859" duration="5184000" />
+      <workItem from="1617470291994" duration="3002000" />
+      <workItem from="1617575146852" duration="10397000" />
+      <workItem from="1617673127191" duration="1237000" />
+      <workItem from="1617751337256" duration="6162000" />
+      <workItem from="1618167565824" duration="602000" />
+      <workItem from="1618361704532" duration="1870000" />
+      <workItem from="1618768207095" duration="1198000" />
+      <workItem from="1619491045570" duration="600000" />
+      <workItem from="1619741664679" duration="33009000" />
+      <workItem from="1619787657983" duration="50000" />
     </task>
     <servers />
   </component>
@@ -235,6 +256,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1829" y="220" width="732" height="644" key="#Inspections" timestamp="1617596615667">
+      <screen x="1360" y="0" width="1680" height="1050" />
+    </state>
+    <state x="1829" y="220" width="732" height="644" key="#Inspections/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1617596615667" />
     <state x="1913" y="93" width="574" height="897" key="#PHP" timestamp="1617080020294">
       <screen x="1360" y="0" width="1680" height="1050" />
     </state>
@@ -251,6 +276,10 @@
       <screen x="1360" y="0" width="1680" height="1050" />
     </state>
     <state x="1933" y="266" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1615868987973" />
+    <state x="2035" y="461" width="319" height="162" key="NewPhpFileDialog" timestamp="1617595616209">
+      <screen x="1360" y="0" width="1680" height="1050" />
+    </state>
+    <state x="2035" y="461" width="319" height="162" key="NewPhpFileDialog/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1617595616209" />
     <state x="1685" y="189" width="1289" height="737" key="SettingsEditor" timestamp="1617079779973">
       <screen x="1360" y="0" width="1680" height="1050" />
     </state>

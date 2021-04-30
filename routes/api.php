@@ -75,5 +75,45 @@ Route::group([
     });
 });
 
+Route::group(['middleware'=>'auth:api'],
+    function (){
+        Route::group(['middleware'=>'role:developer'],
+            function (){
+            Route::group(['prefix'=>'users'],function(){
+                Route::get('','App\Http\Controllers\UserController@all');
+            });
+
+
+            }
+
+        );
+
+    }
+
+);
+
 Route::get('user1', 'App\Http\Controllers\UserController@all');
-Route::post('login1', 'App\Http\Controllers\UserController@login');
+Route::post('login1', 'App\Http\Controllers\UserController@loginprueba');
+
+Route::group(['prefix' => 'roles'],
+    function () {
+        Route::post('', 'App\Http\Controllers\UserRolesController@store');
+        Route::get('', 'App\Http\Controllers\UserRolesController@get');
+        Route::patch('', 'App\Http\Controllers\UserRolesController@update');
+        Route::delete('', 'App\Http\Controllers\UserRolesController@destroy');
+
+        //Premisos
+
+        Route::get('id/{id_rol}/permissions','App\Http\Controllers\UserRolesController@permissions');
+        Route::post('permissions','App\Http\Controllers\UserRolesController@add_permissions');
+        Route::delete('permissions','App\Http\Controllers\UserRolesController@remove_permissions');
+    });
+
+///permision
+Route::group(['prefix'=>'permissions']
+    ,function(){
+        Route::post('','App\Http\Controllers\UserPermissionsCotroller@store');
+        Route::get('','App\Http\Controllers\UserPermissionsCotroller@get');
+        Route::patch('','App\Http\Controllers\UserPermissionsCotroller@update');
+        Route::delete('','App\Http\Controllers\UserPermissionsCotroller@destroy');
+});

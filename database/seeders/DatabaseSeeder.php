@@ -22,5 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call(sedeSeed::class);
         $this->call(areaSeed::class);
         $this->call(positionSeed::class);
+        $this->call(permissionSeeder::class);
+        $this->call(roleSeeder::class);
+        $this->call(rolesPermissionsSeed::class);
+        $this->call(roleUserSeed::class);
     }
 }
