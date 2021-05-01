@@ -18,13 +18,15 @@ class RoleMiddleware
     {
         if(!$request->user()->hasRole($role)) {
 
-            abort(404);
+            //abort(404);
+            return response('sin permiso role',404);
 
         }
 
         if($permission !== null && !$request->user()->can($permission)) {
 
-            abort(404);
+            //abort(404);
+            return response('sin permiso permiso',404);
         }
 
         return $next($request);

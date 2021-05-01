@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    public function __construct(){
+
+        $this->middleware('auth');
+    }
+
     public function signUp(Request $request){
         $input = $request->all();
         $input['password'] =Hash::make($request->password);

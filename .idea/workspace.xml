@@ -22,11 +22,10 @@
     <list default="true" id="666f2225-8d2a-4195-a0cc-86b27f68fffb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RoleMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RoleMiddleware.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/oauth-private.key" beforeDir="false" afterPath="$PROJECT_DIR$/storage/oauth-private.key" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/oauth-public.key" beforeDir="false" afterPath="$PROJECT_DIR$/storage/oauth-public.key" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +236,18 @@
       <workItem from="1619491045570" duration="600000" />
       <workItem from="1619741664679" duration="33009000" />
       <workItem from="1619787657983" duration="50000" />
+      <workItem from="1619788143246" duration="235000" />
+      <workItem from="1619788695188" duration="100000" />
+      <workItem from="1619826472055" duration="12239000" />
     </task>
+    <task id="LOCAL-00001" summary="Creacion de roles y permiso">
+      <created>1619788220737</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1619788220737</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +264,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Creacion de roles y permiso" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creacion de roles y permiso" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1829" y="220" width="732" height="644" key="#Inspections" timestamp="1617596615667">
