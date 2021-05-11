@@ -94,7 +94,7 @@ Route::group(['middleware'=>'auth:api'],
                     Route::post('roles','App\Http\Controllers\UsersController@add_rol');
                     Route::delete('roles', 'App\Http\Controllers\UsersController@remove_rol');
 
-                    Route::get('id/{id_user}/permissions','App\Http\Controllers\UsersController@permissions');
+                    Route::get('id/{id_user}/permissions','App\Http\Controllers\UserController@permissions');
                     Route::post('permission','App\Http\Controllers\UsersController@add_permission');
                     Route::delete('permission','App\Http\Controllers\UsersController@remove_permission');
                 });
