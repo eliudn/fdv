@@ -19,37 +19,37 @@ use App\Http\Controllers\UserController;
 //    return $request->user();
 //});
 // Pesona
-Route::get('person','App\Http\Controllers\PersonController@getPerson');
-Route::get('person/{id}','App\Http\Controllers\PersonController@getPersonId');
-Route::post('Person','App\Http\Controllers\PersonController@addPerson');
-Route::put('Person','App\Http\Controllers\PersonController@updatePerson');
+Route::get('personSP','App\Http\Controllers\PersonController@getPerson');
+Route::get('personSP/{id}','App\Http\Controllers\PersonController@getPersonId');
+Route::post('PersonSP','App\Http\Controllers\PersonController@addPerson');
+Route::put('PersonSP','App\Http\Controllers\PersonController@updatePerson');
 
 //sede area
-Route::get('sede','App\Http\Controllers\SedeController@getSede');
-Route::get('sede/{id}','App\Http\Controllers\SedeController@getSedeId');
-Route::post('sede','App\Http\Controllers\SedeController@addSede');
-Route::put('sede','App\Http\Controllers\SedeController@updateSede');
+Route::get('sedeSP','App\Http\Controllers\SedeController@getSede');
+Route::get('sedeSP/{id}','App\Http\Controllers\SedeController@getSedeId');
+Route::post('sedeSP','App\Http\Controllers\SedeController@addSede');
+Route::put('sedeSP','App\Http\Controllers\SedeController@updateSede');
 
-Route::get('area','App\Http\Controllers\SedeController@getArea');
-Route::get('area/{id}','App\Http\Controllers\SedeController@getAreaId');
-Route::post('area','App\Http\Controllers\SedeController@addArea');
-Route::put('area','App\Http\Controllers\SedeController@updateArea');
+Route::get('areaSP','App\Http\Controllers\SedeController@getArea');
+Route::get('areaSP/{id}','App\Http\Controllers\SedeController@getAreaId');
+Route::post('areaSP','App\Http\Controllers\SedeController@addArea');
+Route::put('areaSP','App\Http\Controllers\SedeController@updateArea');
 
 // Localisacion
-Route::get('region','App\Http\Controllers\LocationController@getDepartaments');
-Route::get('region/{id}','App\Http\Controllers\LocationController@getDepartamentId');
+Route::get('regionSP','App\Http\Controllers\LocationController@getDepartaments');
+Route::get('regionSP/{id}','App\Http\Controllers\LocationController@getDepartamentId');
 
 
-Route::get('document_type','App\Http\Controllers\LocationController@getDocumentType');
+Route::get('document_typeSP','App\Http\Controllers\LocationController@getDocumentType');
 
 // Empleado
-Route::get('employee','App\Http\Controllers\EmployeeController@getEmployee');
-Route::get('employee/{id}','App\Http\Controllers\EmployeeController@getEmployeeId');
+Route::get('employeeSP','App\Http\Controllers\EmployeeController@getEmployee');
+Route::get('employeeSP/{id}','App\Http\Controllers\EmployeeController@getEmployeeId');
 //Route::post('Employees','App\Http\Controllers\EmployeeController@addEmployee');
-Route::put('employeeu/{id}','App\Http\Controllers\EmployeeController@updateEmployee');
-Route::patch('employee/{id}','App\Http\Controllers\EmployeeController@update');
+Route::put('employeeuSP/{id}','App\Http\Controllers\EmployeeController@updateEmployee');
+Route::patch('employeeSP/{id}','App\Http\Controllers\EmployeeController@update');
 
-Route::post('employee','App\Http\Controllers\EmployeeController@addPersonaEmpleado');
+Route::post('employeeSP','App\Http\Controllers\EmployeeController@addPersonaEmpleado');
 
 //Usuario
 /***
@@ -83,8 +83,8 @@ Route::group(['middleware'=>'auth:api'],
     Route::group(['prefix'=>'v1'], function(){
 
 
-        Route::group(['middleware'=>'role:developer'],
-            function (){
+   //     Route::group(['middleware'=>'role:developer'],
+     //       function (){
 
                 //USUARIUO
                 Route::group(['prefix'=>'users'],function(){
@@ -114,6 +114,9 @@ Route::group(['middleware'=>'auth:api'],
                         Route::delete('permissions','App\Http\Controllers\UserRolesController@remove_permissions');
                     });
 
+
+
+
                 //PERMISOS
                 Route::group(['prefix'=>'permissions']
                     ,function(){
@@ -123,17 +126,45 @@ Route::group(['middleware'=>'auth:api'],
                         Route::delete('','App\Http\Controllers\UserPermissionsCotroller@destroy');
                     });
 
-            }
+                // Pesona
+                Route::get('person','App\Http\Controllers\PersonController@getPerson');
+                Route::get('person/{id}','App\Http\Controllers\PersonController@getPersonId');
+                Route::post('Person','App\Http\Controllers\PersonController@addPerson');
+                Route::put('Person','App\Http\Controllers\PersonController@updatePerson');
 
-        );
+                //sede area
+                Route::get('sede','App\Http\Controllers\SedeController@getSede');
+                Route::get('sede/{id}','App\Http\Controllers\SedeController@getSedeId');
+                Route::post('sede','App\Http\Controllers\SedeController@addSede');
+                Route::put('sede','App\Http\Controllers\SedeController@updateSede');
+
+                Route::get('area','App\Http\Controllers\SedeController@getArea');
+                Route::get('area/{id}','App\Http\Controllers\SedeController@getAreaId');
+                Route::post('area','App\Http\Controllers\SedeController@addArea');
+                Route::put('area','App\Http\Controllers\SedeController@updateArea');
+
+                // Localisacion
+                Route::get('region','App\Http\Controllers\LocationController@getDepartaments');
+                Route::get('region/{id}','App\Http\Controllers\LocationController@getDepartamentId');
+
+
+                Route::get('document_type','App\Http\Controllers\LocationController@getDocumentType');
+
+                // Empleado
+                Route::get('employee','App\Http\Controllers\EmployeeController@getEmployee');
+                Route::get('employee/{id}','App\Http\Controllers\EmployeeController@getEmployeeId');
+                //Route::post('Employees','App\Http\Controllers\EmployeeController@addEmployee');
+                Route::put('employeeu/{id}','App\Http\Controllers\EmployeeController@updateEmployee');
+                Route::patch('employee/{id}','App\Http\Controllers\EmployeeController@update');
+
+                Route::post('employee','App\Http\Controllers\EmployeeController@addPersonaEmpleado');
+           // });
 
     });
 
 
 
-    }
-
-);
+    });
 
 
 

@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Permission;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Auth\Access\Gate;
+use Illuminate\Support\Facades\Gate;
 
 class PermissionsServiceProvider extends ServiceProvider
 {

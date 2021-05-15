@@ -18,6 +18,16 @@ class roleSeeder extends Seeder
             'name'=>'Desarrollador backend',
             'slug'=>'developer',
         ];
+        $seed[]=[
+            'name'=>'Administrador de sistemas',
+            'slug'=>'admin',
+        ];
+        $seed[]=[
+            'name'=>'general',
+            'slug'=>'user',
+        ];
+
+
         DB::table('roles')->insert($seed);
     }
 }

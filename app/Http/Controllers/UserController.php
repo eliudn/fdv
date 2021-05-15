@@ -14,7 +14,7 @@ class UserController extends Controller
 
     public function signUp(Request $request){
 
-        
+
         $input = $request->all();
         $input['password'] =Hash::make($request->password);
 
@@ -133,5 +133,6 @@ class UserController extends Controller
 
         return response('Permiso eliminado', 200);
     }
+
 
 }

@@ -30,6 +30,23 @@ class rolesPermissionsSeed extends Seeder
             'role_id' => '1',
             'permission_id' => '4',
         ];
+
+        //Rol General
+        $seeds[] = [
+            'role_id' => '3',
+            'permission_id' => '16',
+        ];
+        $seeds[] = [
+            'role_id' => '3',
+            'permission_id' => '17',
+        ];
+        $seeds[] = [
+            'role_id' => '3',
+            'permission_id' => '19',
+        ];
+
+
+
         DB::table('roles_permissions')->insert($seeds);
     }
 }

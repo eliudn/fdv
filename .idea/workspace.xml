@@ -16,13 +16,31 @@
         <item name="GROUP_NODE:heroku" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:roles" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="666f2225-8d2a-4195-a0cc-86b27f68fffb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LocationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LocationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PersonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PersonController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SedeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SedeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/positionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/positionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RoleMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RoleMiddleware.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Permissions/HasPermissionsTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Permissions/HasPermissionsTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/PermissionsServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/PermissionsServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/permissionSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/permissionSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/roleSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/roleSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/roleUserSeed.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/roleUserSeed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/rolesPermissionsSeed.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/rolesPermissionsSeed.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -242,6 +260,12 @@
       <workItem from="1620652213518" duration="634000" />
       <workItem from="1620655476648" duration="2393000" />
       <workItem from="1620683176254" duration="801000" />
+      <workItem from="1620777483829" duration="5397000" />
+      <workItem from="1620833633097" duration="137000" />
+      <workItem from="1620881342767" duration="2775000" />
+      <workItem from="1620937325877" duration="261000" />
+      <workItem from="1620948942465" duration="2975000" />
+      <workItem from="1621034825147" duration="17818000" />
     </task>
     <task id="LOCAL-00001" summary="Creacion de roles y permiso">
       <created>1619788220737</created>
@@ -293,10 +317,10 @@
       <screen x="1360" y="0" width="1680" height="1050" />
     </state>
     <state x="1933" y="266" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1615868987973" />
-    <state x="1983" y="296" width="424" height="491" key="FileChooserDialogImpl" timestamp="1620654313350">
+    <state x="1983" y="296" width="424" height="491" key="FileChooserDialogImpl" timestamp="1620999411362">
       <screen x="1360" y="0" width="1680" height="1050" />
     </state>
-    <state x="1983" y="296" width="424" height="491" key="FileChooserDialogImpl/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1620654313350" />
+    <state x="1983" y="296" width="424" height="491" key="FileChooserDialogImpl/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1620999411362" />
     <state x="2035" y="461" width="319" height="162" key="NewPhpFileDialog" timestamp="1617595616209">
       <screen x="1360" y="0" width="1680" height="1050" />
     </state>
@@ -309,31 +333,5 @@
       <screen x="1360" y="0" width="1680" height="1050" />
     </state>
     <state x="1864" y="229" key="run.anything.popup/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1615752473232" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>218</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>221</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>225</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php</url>
-          <line>229</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

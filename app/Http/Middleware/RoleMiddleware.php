@@ -19,7 +19,7 @@ class RoleMiddleware
         if(!$request->user()->hasRole($role)) {
 
             //abort(404);
-            return response('sin permiso ',404);
+            return response('sin permiso role ',404);
 
         }
 
