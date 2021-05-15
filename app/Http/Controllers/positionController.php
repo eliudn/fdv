@@ -16,6 +16,5 @@ class positionController extends Controller
         if($request->user()->can('all_cargos')){
             return response()->json(position::all(),200);
         }
-
     }
 }
