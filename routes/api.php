@@ -51,6 +51,7 @@ Route::patch('employeeSP/{id}','App\Http\Controllers\EmployeeController@update')
 
 Route::post('employeeSP','App\Http\Controllers\EmployeeController@addPersonaEmpleado');
 
+
 //Usuario
 /***
 Route::post('user','App\Http\Controllers\UserController@store');
@@ -83,8 +84,8 @@ Route::group(['middleware'=>'auth:api'],
     Route::group(['prefix'=>'v1'], function(){
 
 
-   //     Route::group(['middleware'=>'role:developer'],
-     //       function (){
+       Route::group(['middleware'=>'role:developer'],
+           function (){
 
                 //USUARIUO
                 Route::group(['prefix'=>'users'],function(){
@@ -151,22 +152,22 @@ Route::group(['middleware'=>'auth:api'],
                 Route::get('document_type','App\Http\Controllers\LocationController@getDocumentType');
 
                 // Empleado
-                Route::get('employee','App\Http\Controllers\EmployeeController@getEmployee');
-                Route::get('employee/{id}','App\Http\Controllers\EmployeeController@getEmployeeId');
-                //Route::post('Employees','App\Http\Controllers\EmployeeController@addEmployee');
-                Route::put('employeeu/{id}','App\Http\Controllers\EmployeeController@updateEmployee');
+                Route::get('employee','App\Http\Controllers\EmployeeController@get_all');
+                Route::get('employee/{id}','App\Http\Controllers\EmployeeController@get');
+                Route::post('Employees','App\Http\Controllers\EmployeeController@store');
+                Route::put('employeeu/{id}','App\Http\Controllers\EmployeeController@update__all');
                 Route::patch('employee/{id}','App\Http\Controllers\EmployeeController@update');
 
-                Route::post('employee','App\Http\Controllers\EmployeeController@addPersonaEmpleado');
-           // });
+                Route::post('employee','App\Http\Controllers\EmployeeController@store_all');
 
+                //Cargo
+                Route::group(['prefix'=>'cargo'], function (){
+                    Route::get('','App\Http\Controllers\positionController@get_all');
+                    Route::get('{id}','App\Http\Controllers\positionController@get');
+                    Route::post('', 'App\Http\Controllers\positionController@store');
+                    Route::put('{id}','App\Http\Controlles\positionController@update');
+                    Route::delete('{id}','App\Http\Controllers\positionController@destroy');
+                });
+            });
     });
-
-
-
-    });
-
-
-
-
-
+});

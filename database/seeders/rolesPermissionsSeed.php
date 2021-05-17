@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +16,17 @@ class rolesPermissionsSeed extends Seeder
      */
     public function run()
     {
-        $seeds[] = [
+        $role = Role::find(1);
+        $permission = Permission::all();
+
+        foreach ($permission as $index=> $p){
+            $role->permissions()->attach($p->id);
+        }
+
+
+
+        /*
+         * $seeds[] = [
             'role_id' => '1',
             'permission_id' => '1',
         ];
@@ -44,9 +56,12 @@ class rolesPermissionsSeed extends Seeder
             'role_id' => '3',
             'permission_id' => '19',
         ];
+          DB::table('roles_permissions')->insert($seeds);
+         */
 
 
 
-        DB::table('roles_permissions')->insert($seeds);
+
+
     }
 }

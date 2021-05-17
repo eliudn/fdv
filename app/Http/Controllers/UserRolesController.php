@@ -6,7 +6,7 @@ use App\Models\Role;
 use Illuminate\Http\Request;
 use mysql_xdevapi\Exception;
 
-class UserRolesController extends Controller
+class AUserRolesController extends Controller
 {
     public function store(Request $request){
         if(!$role = Role::create([

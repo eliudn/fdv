@@ -17,7 +17,8 @@ class userSeed extends Seeder
             'name'=>'eliud niebles',
             'email'=>'admin',
             'password'=>\Illuminate\Support\Facades\Hash::make('1234')
-        ]);
+        ],
+        );
         User::create([
             'name'=>'Mijail Gonazales',
             'email'=>'admin2',

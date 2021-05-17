@@ -6,7 +6,9 @@ use App\Models\position;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Http\Resources\Employee as EmployeeResource;
 use App\Models\person;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class EmployeeController extends Controller
@@ -15,37 +17,25 @@ class EmployeeController extends Controller
         $this->middleware('auth:api');
     }
 
-    public function getEmployee(Request $request)
+    public function get_all(Request $request)
     {
         if($request->user()->can('all_empleado')){
             $employee = Employee::all()->where('state',true);
-            /*$employee =Employee::select('employees.id','pe.name1','pe.name2',
-                'pe.last_name1','pe.last_name2','doty.detail as document_type','pe.id_number',
-                'cy.name as place_issue','pe.date_issue','a.name as area','p.name as position',
-                'blood_type','marital_status', 'date_entry','retirement_date','salary','cy2.name as city','employees.state')
-                ->join('persons as pe','person_id','pe.id')
-                ->join('document_types as doty','pe.document_type_id','doty.id' )
-                ->join('area as a', 'area_id','a.id')
-                ->join('position as p', 'position_id','p.id')
-                ->join('cities as cy', 'pe.place_issue', 'cy.id')
-                ->join('cities as cy2','pe.city_id','cy2.id')
-                ->where('employees.state',true)
-                ->get();*/
 
-            foreach ($employee as $e){
-                $e->position;
-                $e->area;
-                $e->person;
-                $e->user;
-            }
 
-            return response()->json($employee,200);
+            ResponseController::set_data(['Empleados'=> EmployeeResource::collection($employee)]);
+            return ResponseController::response('OK');
+            //return response()->json($employee,200);
+        }else{
+            ResponseController::set_errors(true);
+            ResponseController::set_messages("USUARIO SIN PERMISO");
+            return ResponseController::response('BAD REQUEST');
         }
 
     }
 
 
-    public function getEmployeeId(Request $request, $id)
+    public function get(Request $request, $id)
     {
         if($request->user()->can('get_empleado')) {
             $employee =Employee::where('state','true')->find($id);
@@ -55,27 +45,40 @@ class EmployeeController extends Controller
                 return response()->json(['Message'=>'not found'],404);
             }
 
-            $employee->position;
-            $employee->area;
-            $employee->person;
-            $employee->user;
 
-            return response()->json($employee,200);
+            ResponseController::set_data(['Empleado'=> new EmployeeResource($employee) ]);
+            return ResponseController::response('OK');
+            //return response()->json($employee,200);
+        }else{
+            ResponseController::set_errors(true);
+            ResponseController::set_messages("USUARIO SIN PERMISO");
+            return ResponseController::response('BAD REQUEST');
         }
 
     }
 
-    public function  addEmployee(Request $request){
+    public function store(Request $request){
         if($request->user()->can('add_empleado')){
-            $Employee = Employee::create($request->all());
-
-            return response($Employee,200);
+           if(!$employee = Employee::create($request->all())){
+               ResponseController::set_errors(true);
+               ResponseController::set_messages("Error creando el usuario");
+               return ResponseController::response('BAD REQUEST');
+           }
+            ResponseController::set_messages("Cargo creado");
+            ResponseController::set_data(['Empleado_id' => $employee->id]);
+            return ResponseController::response('CREATED');
+            //return response($Employee,200);
+        }else{
+            ResponseController::set_errors(true);
+            ResponseController::set_messages("USUARIO SIN PERMISO");
+            return ResponseController::response('BAD REQUEST');
         }
     }
 
-    public function addPersonaEmpleado(Request $request)
+    public function store_all(Request $request)
     {
-        if($request->user()->can('add_personaEmpleado')){
+        if($request->user()->can('add_personaEmpleado'))
+        {
             $rules=array(
                 "name1"=>"required|string",
                 //"name2"=>"string",
@@ -85,7 +88,7 @@ class EmployeeController extends Controller
                 "document_type_id"=>"required|numeric",
                 "blood_type"=> "required|string",
                 "city_id"=>"required|numeric",
-                "user_id"=>"required|numeric",
+
                 "area_id"=>"required|numeric",
                 "date_entry"=>"required|string",
                 "salary" =>"required|numeric",
@@ -93,28 +96,32 @@ class EmployeeController extends Controller
             );
             $validator = Validator::make($request->all(),$rules);
             if($validator->fails()){
-                return $validator->errors();
+
+                ResponseController::set_errors(true);
+                ResponseController::set_messages($validator->errors());
+                return ResponseController::response('BAD REQUEST');
+
             }else{
-                $id_number =Person::where('id_number',$request->id_number)->get();
-                if(count($id_number)==0){
-                    $person = person::create(
-                        [
-                            'name1' => $request->name1,
-                            'name2' => $request->name2,
-                            'last_name1' => $request->last_name1,
-                            'last_name2' => $request->last_name2,
-                            'id_number' => $request->id_number,
-                            'document_type_id' => $request->document_type_id,
-                            'date_issue' => $request->date_issue,
-                            'place_issue' => $request->place_issue,
-                            'blood_type' => $request->blood_type,
-                            'marital_status' => $request->marital_status,
-                            'city_id' => $request->city_id,
-                            'user_id' => $request->user_id
-                        ]
-                    );
-                    if(!is_null($person)){
-                        $Employee = Employee::create(
+                try {
+
+                    DB::transaction( function () use($request){
+                        $person = person::create(
+                            [
+                                'name1' => $request->name1,
+                                'name2' => $request->name2,
+                                'last_name1' => $request->last_name1,
+                                'last_name2' => $request->last_name2,
+                                'id_number' => $request->id_number,
+                                'document_type_id' => $request->document_type_id,
+                                'date_issue' => $request->date_issue,
+                                'place_issue' => $request->place_issue,
+                                'blood_type' => $request->blood_type,
+                                'marital_status' => $request->marital_status,
+                                'city_id' => $request->city_id,
+                                'user_id' => $request->user()->id,
+                            ]);
+
+                        $employee = Employee::create(
                             [
                                 'person_id'=>$person->id,
                                 'area_id'=>$request->area_id,
@@ -122,19 +129,29 @@ class EmployeeController extends Controller
                                 'retirement_date'=>$request->retirement_date,
                                 'salary'=>$request->salary,
                                 'position_id'=>$request->position_id,
-                                'user_id'=>$request->user_id,
-                            ]
-                        );
-                    }
-                }else{
-                    return response()->json(['Message'=>'La cedula se encuentra registrada',],401);
+                                'user_id'=>$request->user()->id,
+                            ]);
+
+                    });
+                    ResponseController::set_messages("Empleado actualizado");
+
+                    return ResponseController::response('OK');
+                }catch (\Exception $e){
+                    ResponseController::set_errors(true);
+                    ResponseController::set_messages($e);
+                    return ResponseController::response('BAD REQUEST');
                 }
+
+
             }
 
-            $Employe = Employee::find($Employee->id);
-            $Employe->person;
-            return response($Employe,200);
+        }else{
+            ResponseController::set_errors(true);
+            ResponseController::set_messages("USUARIO SIN PERMISO");
+            return ResponseController::response('BAD REQUEST');
         }
+
+
     }
     /**
      * Update the specified resource in storage.
@@ -142,12 +159,12 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function updateEmployee($id,Request $request){
+    public function update__all($id,Request $request){
 
         if($request->user()->can('update_empleado')){
             $Employee = Employee::find($id);
             $rules=array(
-                'name1'=>'required|string',
+               'name1'=>'required|string',
                 'name2'=>'string',
                 'last_name1'=>'required|string',
                 'last_name2'=>'string',
@@ -163,11 +180,17 @@ class EmployeeController extends Controller
             );
             if(is_null($Employee))
             {
-                return response()->json(['Message'=>'not found'],401);
+                ResponseController::set_errors(true);
+                ResponseController::set_messages("No encontrado");
+                return ResponseController::response('BAD REQUEST');
             }
             $validator = Validator::make($request->all(),$rules);
             if($validator->fails()){
-                return $validator->errors();
+
+                ResponseController::set_errors(true);
+                ResponseController::set_messages($validator->errors());
+                return ResponseController::response('BAD REQUEST');
+
             }else{
 
                 $person = person::find($Employee->person_id);
@@ -199,18 +222,28 @@ class EmployeeController extends Controller
 
             }
             $Employee->person;
-            return response($Employee,200);
+
+            ResponseController::set_data(['Empleado'=>$Employee]);
+            ResponseController::set_messages('Empleado actulizado');
+            return ResponseController::response('OK');
+        }
+        else{
+            ResponseController::set_errors(true);
+            ResponseController::set_messages("USUARIO SIN PERMISO");
+            return ResponseController::response('BAD REQUEST');
         }
     }
 
 
 
     public function update($id,Request $request){
-        if($request->user()->can('update_empleadoPersona')){
+        if($request->user()->can('update_personaEmpleado')){
             $employee = Employee::find($id);
             if(!$employee)
             {
-                return response()->json(['Message'=>'not found'],401);
+                ResponseController::set_errors(true);
+                ResponseController::set_messages("Empleado no existe");
+                return ResponseController::response('BAD REQUEST');
             }
             //persons
             $name1 = $request->name1;
@@ -305,18 +338,25 @@ class EmployeeController extends Controller
                     $person->save();
                     $employee->save();
 
-                    $employee->person;
+                    ResponseController::set_messages("Empleado actualizado");
+                    ResponseController::set_data(['Empleado'=> new EmployeeResource($employee) ]);
+                    return ResponseController::response('OK');
 
-                    return response($employee,200);
+
 
                 }else
                 {
+                    ResponseController::set_errors(true);
+                    ResponseController::set_messages('No se ha modificado ningún dato de empleado.');
 
-                    return response()->json(['errors'=>array([
-                        'code'=>304,'message'=>'No se ha modificado ningún dato de empleado.'
-                        ,'data'=>$request->name1])],305);
+                    return ResponseController::response('NOT MODIFIED');
+
                 }
             }
+        }else{
+            ResponseController::set_errors(true);
+            ResponseController::set_messages("USUARIO SIN PERMISO");
+            return ResponseController::response('BAD REQUEST');
         }
     }
 }

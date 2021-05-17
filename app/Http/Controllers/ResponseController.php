@@ -99,8 +99,9 @@ class ResponseController extends Controller
 
         if(is_null($status)){
             $status = self::$response['status_code'];
+
         }
-        self::response['status_code']= self::$status_codes[$status];
+        self::set_status_code(self::$status_codes[$status]);
         return response()->json(self::$response, self::$status_codes[$status]);
     }
 

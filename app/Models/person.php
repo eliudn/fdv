@@ -30,4 +30,13 @@ class person extends Model
     {
         return $this->hasOne('App\Models\Employee');
     }
+
+    public function document_type(){
+
+        return $this->belongsTo('App\Models\documentType');
+    }
+
+    public function city(){
+        return $this->belongsTo('App\Models\city');
+    }
 }

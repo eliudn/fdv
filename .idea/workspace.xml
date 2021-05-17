@@ -26,8 +26,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="666f2225-8d2a-4195-a0cc-86b27f68fffb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LocationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LocationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ResponseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResponseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserRolesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserRolesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/positionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/positionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/person.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/person.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/permissionSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/permissionSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/rolesPermissionsSeed.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/rolesPermissionsSeed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/userSeed.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/userSeed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,7 +260,8 @@
       <workItem from="1620881342767" duration="2775000" />
       <workItem from="1620937325877" duration="261000" />
       <workItem from="1620948942465" duration="2975000" />
-      <workItem from="1621034825147" duration="18246000" />
+      <workItem from="1621034825147" duration="20895000" />
+      <workItem from="1621118957122" duration="43059000" />
     </task>
     <task id="LOCAL-00001" summary="Creacion de roles y permiso">
       <created>1619788220737</created>
@@ -319,5 +329,9 @@
       <screen x="1360" y="0" width="1680" height="1050" />
     </state>
     <state x="1864" y="229" key="run.anything.popup/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1615752473232" />
+    <state x="1863" y="251" width="672" height="678" key="search.everywhere.popup" timestamp="1621065315341">
+      <screen x="1360" y="0" width="1680" height="1050" />
+    </state>
+    <state x="1863" y="251" width="672" height="678" key="search.everywhere.popup/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1621065315341" />
   </component>
 </project>

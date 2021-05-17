@@ -15,40 +15,52 @@ class LocationController extends Controller
     }
 
     public function getDepartaments(Request $request){
-        if($request->user()->can('all_departamentos')){}
+
         $departament = departament::all();
-        return response()->json($departament,200);
+        ResponseController::set_data(['Departamentos' => $departament]);
+        return ResponseController::response('OK');
+
     }
 
     public function getDepartamentId($id, Request $request){
 
-        if($request->user()->can('all_municipios')){
-
             $departament = departament::find($id);
             if (is_null($departament)){
-                return response()->json(['Message'=>'not found'],404);
+                ResponseController::set_errors(true);
+                ResponseController::set_messages("Sin dato");
+                return ResponseController::response('BAD REQUEST');
             }
-            return response()->json($departament->cities,200);
-        }
+        $departament->cities;
+        ResponseController::set_data(['Departamento' => $departament]);
+        //ResponseController::set_data(['Municipios' => $departament->cities]);
+        return ResponseController::response('OK');
+
     }
 
 
     public function getCities($id, Request $request){
 
-        if($request->user()->can('get_municipio')){
+
             $city = city::find($id);
             if (is_null($city)){
-                return response()->json(['Message'=>'not found'],404);
+                ResponseController::set_errors(true);
+                ResponseController::set_messages("Sin dato");
+                return ResponseController::response('BAD REQUEST');
             }
-            return response()->json($city::find($id),200);
-        }
+        ResponseController::set_data(['Departamento' => $city::find($id)]);
+        //ResponseController::set_data(['Municipios' => $departament->cities]);
+        return ResponseController::response('OK');
+
+
 
     }
 
     // Tipo de documentos
-    public function getDocumentType(Request $request){
+    public function getDocumentType(){
 
-        return response()->json(documentType::all(),200);
+        ResponseController::set_data(['Departamentos' => documentType::all()]);
+        return ResponseController::response('OK');
+
     }
 
 
