@@ -18,101 +18,56 @@ use App\Http\Controllers\UserController;
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
-// Pesona
-Route::get('personSP','App\Http\Controllers\PersonController@getPerson');
-Route::get('personSP/{id}','App\Http\Controllers\PersonController@getPersonId');
-Route::post('PersonSP','App\Http\Controllers\PersonController@addPerson');
-Route::put('PersonSP','App\Http\Controllers\PersonController@updatePerson');
-
-//sede area
-Route::get('sedeSP','App\Http\Controllers\SedeController@getSede');
-Route::get('sedeSP/{id}','App\Http\Controllers\SedeController@getSedeId');
-Route::post('sedeSP','App\Http\Controllers\SedeController@addSede');
-Route::put('sedeSP','App\Http\Controllers\SedeController@updateSede');
-
-Route::get('areaSP','App\Http\Controllers\SedeController@getArea');
-Route::get('areaSP/{id}','App\Http\Controllers\SedeController@getAreaId');
-Route::post('areaSP','App\Http\Controllers\SedeController@addArea');
-Route::put('areaSP','App\Http\Controllers\SedeController@updateArea');
-
-// Localisacion
-Route::get('regionSP','App\Http\Controllers\LocationController@getDepartaments');
-Route::get('regionSP/{id}','App\Http\Controllers\LocationController@getDepartamentId');
 
 
-Route::get('document_typeSP','App\Http\Controllers\LocationController@getDocumentType');
 
-// Empleado
-Route::get('employeeSP','App\Http\Controllers\EmployeeController@getEmployee');
-Route::get('employeeSP/{id}','App\Http\Controllers\EmployeeController@getEmployeeId');
-//Route::post('Employees','App\Http\Controllers\EmployeeController@addEmployee');
-Route::put('employeeuSP/{id}','App\Http\Controllers\EmployeeController@updateEmployee');
-Route::patch('employeeSP/{id}','App\Http\Controllers\EmployeeController@update');
+Route::group(['prefix' => 'auth'], function () {
 
-Route::post('employeeSP','App\Http\Controllers\EmployeeController@addPersonaEmpleado');
+    Route::post('login', 'UserController@login');
 
-
-//Usuario
-/***
-Route::post('user','App\Http\Controllers\UserController@store');
-Route::get('user','App\Http\Controllers\UserController@all');
-Route::post('loginx','App\Http\Controllers\UserController@login');
-Route::post('lxgin','App\Http\Controllers\UserController@login');
- *
-*/
-
-Route::group([
-    'prefix' => 'auth'
-], function () {
-    Route::post('login', 'App\Http\Controllers\UserController@login');
-
-    Route::post('signup', 'App\Http\Controllers\UserController@signUp');
+    Route::post('signup', 'UserController@signUp');
 
     Route::group([
         'middleware' => 'auth:api'
-    ], function() {
-        Route::get('logout', 'App\Http\Controllers\UserController@logout');
-        Route::get('user', 'App\Http\Controllers\UserController@all');
-    });
+        ], function() {
+         Route::get('logout', 'UserController@logout');
+            });
 });
 //Routes
 
 Route::group(['middleware'=>'auth:api'],
     function (){
 
-    /// version1
-    Route::group(['prefix'=>'v1'], function(){
-
-
        Route::group(['middleware'=>'role:developer'],
            function (){
 
                 //USUARIUO
                 Route::group(['prefix'=>'users'],function(){
-                    Route::get('','App\Http\Controllers\UserController@all');
+                    Route::get('','UserController@all');
+                    Route::get('{$id}', 'UserController@get');
 
-                    Route::get('id/{id_user}/roles','App\Http\Controllers\UsersController@roles');
-                    Route::post('roles','App\Http\Controllers\UsersController@add_rol');
-                    Route::delete('roles', 'App\Http\Controllers\UsersController@remove_rol');
+                    Route::get('id/{id_user}/roles','UsersController@roles');
+                    Route::post('roles','UsersController@add_rol');
+                    Route::delete('roles', 'UsersController@remove_rol');
 
-                    Route::get('id/{id_user}/permissions','App\Http\Controllers\UserController@permissions');
-                    Route::post('permission','App\Http\Controllers\UsersController@add_permission');
-                    Route::delete('permission','App\Http\Controllers\UsersController@remove_permission');
+                    Route::get('id/{id_user}/permissions','UserController@permissions');
+                    Route::post('permission','UsersController@add_permission');
+                    Route::delete('permission','UsersController@remove_permission');
                 });
 
                 //ROLES
                 Route::group(['prefix' => 'roles'],
                     function () {
-                        Route::post('', 'App\Http\Controllers\UserRolesController@store');
-                        Route::get('', 'App\Http\Controllers\UserRolesController@get');
-                        Route::patch('', 'App\Http\Controllers\UserRolesController@update');
-                        Route::delete('', 'App\Http\Controllers\UserRolesController@destroy');
+                        Route::post('', 'UserRolesController@store');
+                        Route::get('', 'UserRolesController@get');
+                        Route::patch('', 'UserRolesController@update');
+                        Route::delete('', 'UserRolesController@destroy');
 
                         //Premisos
 
-                        Route::get('id/{id_rol}/permissions','App\Http\Controllers\UserRolesController@permissions');
-                        Route::post('permissions','App\Http\Controllers\UserRolesController@add_permissions');
-                        Route::delete('permissions','App\Http\Controllers\UserRolesController@remove_permissions');
+                        Route::get('id/{id_rol}/permissions','UserRolesController@permissions');
+                        Route::post('permissions','UserRolesController@add_permission');
+                        Route::delete('permissions','UserRolesController@remove_permission');
                     });
 
 
@@ -121,53 +76,52 @@ Route::group(['middleware'=>'auth:api'],
                 //PERMISOS
                 Route::group(['prefix'=>'permissions']
                     ,function(){
-                        Route::post('','App\Http\Controllers\UserPermissionsCotroller@store');
-                        Route::get('','App\Http\Controllers\UserPermissionsCotroller@get');
-                        Route::patch('','App\Http\Controllers\UserPermissionsCotroller@update');
-                        Route::delete('','App\Http\Controllers\UserPermissionsCotroller@destroy');
+                        Route::post('','UserPermissionsCotroller@store');
+                        Route::get('','UserPermissionsCotroller@get');
+                        Route::patch('','UserPermissionsCotroller@update');
+                        Route::delete('','UserPermissionsCotroller@destroy');
                     });
 
                 // Pesona
-                Route::get('person','App\Http\Controllers\PersonController@getPerson');
-                Route::get('person/{id}','App\Http\Controllers\PersonController@getPersonId');
-                Route::post('Person','App\Http\Controllers\PersonController@addPerson');
-                Route::put('Person','App\Http\Controllers\PersonController@updatePerson');
+                Route::get('person','PersonController@getPerson');
+                Route::get('person/{id}','PersonController@getPersonId');
+                Route::post('Person','PersonController@addPerson');
+                Route::put('Person','PersonController@updatePerson');
 
                 //sede area
-                Route::get('sede','App\Http\Controllers\SedeController@getSede');
-                Route::get('sede/{id}','App\Http\Controllers\SedeController@getSedeId');
-                Route::post('sede','App\Http\Controllers\SedeController@addSede');
-                Route::put('sede','App\Http\Controllers\SedeController@updateSede');
+                Route::get('sede','SedeController@getSede');
+                Route::get('sede/{id}','SedeController@getSedeId');
+                Route::post('sede','SedeController@addSede');
+                Route::put('sede','SedeController@updateSede');
 
-                Route::get('area','App\Http\Controllers\SedeController@getArea');
-                Route::get('area/{id}','App\Http\Controllers\SedeController@getAreaId');
-                Route::post('area','App\Http\Controllers\SedeController@addArea');
-                Route::put('area','App\Http\Controllers\SedeController@updateArea');
+                Route::get('area','SedeController@getArea');
+                Route::get('area/{id}','SedeController@getAreaId');
+                Route::post('area','SedeController@addArea');
+                Route::put('area','SedeController@updateArea');
 
                 // Localisacion
-                Route::get('region','App\Http\Controllers\LocationController@getDepartaments');
-                Route::get('region/{id}','App\Http\Controllers\LocationController@getDepartamentId');
+                Route::get('region','LocationController@getDepartaments');
+                Route::get('region/{id}','LocationController@getDepartamentId');
 
 
-                Route::get('document_type','App\Http\Controllers\LocationController@getDocumentType');
+                Route::get('document_type','LocationController@getDocumentType');
 
                 // Empleado
-                Route::get('employee','App\Http\Controllers\EmployeeController@get_all');
-                Route::get('employee/{id}','App\Http\Controllers\EmployeeController@get');
-                Route::post('Employees','App\Http\Controllers\EmployeeController@store');
-                Route::put('employeeu/{id}','App\Http\Controllers\EmployeeController@update__all');
-                Route::patch('employee/{id}','App\Http\Controllers\EmployeeController@update');
+                Route::get('employee','EmployeeController@get_all');
+                Route::get('employee/{id}','EmployeeController@get');
+                Route::post('Employees','EmployeeController@store');
+                Route::put('employeeu/{id}','EmployeeController@update__all');
+                Route::patch('employee/{id}','EmployeeController@update');
 
-                Route::post('employee','App\Http\Controllers\EmployeeController@store_all');
+                Route::post('employee','EmployeeController@store_all');
 
                 //Cargo
                 Route::group(['prefix'=>'cargo'], function (){
-                    Route::get('','App\Http\Controllers\positionController@get_all');
-                    Route::get('{id}','App\Http\Controllers\positionController@get');
-                    Route::post('', 'App\Http\Controllers\positionController@store');
-                    Route::put('{id}','App\Http\Controlles\positionController@update');
-                    Route::delete('{id}','App\Http\Controllers\positionController@destroy');
+                    Route::get('','positionController@get_all');
+                    Route::get('{id}','positionController@get');
+                    Route::post('', 'positionController@store');
+                    Route::put('{id}','positionController@update');
+                    Route::delete('{id}','positionController@destroy');
                 });
             });
-    });
 });

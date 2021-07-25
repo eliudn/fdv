@@ -7,29 +7,48 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Validator;
 
 class UserController extends Controller
 {
 
     public function signUp(Request $request){
 
-
         $input = $request->all();
         $input['password'] =Hash::make($request->password);
 
-        User::create($input);
-        return response()->json([
-            'res'=> true,
-            'message' => 'Ususario creado corretamente'
-        ],200);
+        $user = User::create($input);
 
+        ResponseController::set_messages('Usuario creado');
+        ResponseController::set_data(['user_id'=>$user->id]);
+        return ResponseController::response('OK');
 
     }
 
     public  function  all(){
+
         $user = User::all();
-        return response($user,200);
+
+        ResponseController::set_data(['users'=>$user]);
+        return ResponseController::response('OK');
+
+    }
+
+    public function get($id){
+        $validator = Validator::make(['id_user'=>$id],[
+            'id_user'=>'required|integer|min:1',
+        ]);
+        if($validator->fails()){
+            ResponseController::set_errors(true);
+            ResponseController::set_messages($validator->errors()->toArray());
+            return ResponseController::response('BAD REQUEST');
+        }
+
+        $user = User::find($id);
+
+        ResponseController::set_data(['User'=>$user]);
+        return ResponseController::response('CREATED');
+
     }
 
 
@@ -59,13 +78,17 @@ class UserController extends Controller
         if ($request->remember_me)
             $token->expires_at = Carbon::now()->addWeeks(1);
         $token->save();
-
-        return response()->json([
+        ResponseController::set_messages('Logueado');
+        ResponseController::set_data([
             'access_token' => $tokenResult->accessToken,
             'token_type' => 'Bearer',
             'expires_at' => Carbon::parse($token->expires_at)->toDateTimeString()
         ]);
+        return ResponseController::response('OK');
+
     }
+
+
     public function user(Request $request)
     {
         return response()->json($request->user());
@@ -74,10 +97,9 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();
+        ResponseController::set_messages('Successfully logged out');
+        return ResponseController::response('OK');
 
-        return response()->json([
-            'message' => 'Successfully logged out'
-        ]);
     }
 
     public function roles($id_user){

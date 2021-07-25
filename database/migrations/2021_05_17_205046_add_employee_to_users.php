@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePositionTable extends Migration
+class AddEmployeeToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreatePositionTable extends Migration
      */
     public function up()
     {
-        Schema::create('position', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->unique();
-            $table->text('detail')->nullable();
-            $table->softDeletes();
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('employee_id')->unique()->nullable();
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
         });
     }
 
@@ -28,6 +26,8 @@ class CreatePositionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('position');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

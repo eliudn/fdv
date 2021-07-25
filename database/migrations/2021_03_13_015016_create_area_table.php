@@ -19,6 +19,7 @@ class CreateAreaTable extends Migration
             $table->string('detail')->nullable();
             $table->unsignedBigInteger('sede_id');
             $table->foreign('sede_id')->references('id')->on('sedes');
+            $table->softDeletes();
         });
     }
 

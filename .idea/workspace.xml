@@ -25,18 +25,24 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="666f2225-8d2a-4195-a0cc-86b27f68fffb" name="Default Changelist" comment="">
+    <list default="true" id="666f2225-8d2a-4195-a0cc-86b27f68fffb" name="Default Changelist" comment="Creacion de roles y permiso">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LocationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LocationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ResponseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResponseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserRolesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserRolesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/positionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/positionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/person.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/person.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/permissionSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/permissionSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/rolesPermissionsSeed.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/rolesPermissionsSeed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/userSeed.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/userSeed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_09_045904_create_persons_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_09_045904_create_persons_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_13_014352_create_document_person_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_13_014352_create_document_person_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_13_014933_create_sedes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_13_014933_create_sedes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_13_015016_create_area_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_13_015016_create_area_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_13_015055_create_position_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_13_015055_create_position_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_13_015056_create_employees_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_13_015056_create_employees_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +195,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../ProyectosEmpresa/esercom" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -261,7 +267,13 @@
       <workItem from="1620937325877" duration="261000" />
       <workItem from="1620948942465" duration="2975000" />
       <workItem from="1621034825147" duration="20895000" />
-      <workItem from="1621118957122" duration="43059000" />
+      <workItem from="1621118957122" duration="64675000" />
+      <workItem from="1621342063788" duration="37000" />
+      <workItem from="1621697488137" duration="1200000" />
+      <workItem from="1621784957758" duration="1769000" />
+      <workItem from="1622398667449" duration="3137000" />
+      <workItem from="1622506584469" duration="1064000" />
+      <workItem from="1623148582657" duration="48000" />
     </task>
     <task id="LOCAL-00001" summary="Creacion de roles y permiso">
       <created>1619788220737</created>
@@ -281,7 +293,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="roles" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -291,47 +315,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Creacion de roles y permiso" />
     <option name="LAST_COMMIT_MESSAGE" value="Creacion de roles y permiso" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="1829" y="220" width="732" height="644" key="#Inspections" timestamp="1617596615667">
-      <screen x="1360" y="0" width="1680" height="1050" />
-    </state>
-    <state x="1829" y="220" width="732" height="644" key="#Inspections/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1617596615667" />
-    <state x="1913" y="93" width="574" height="897" key="#PHP" timestamp="1617080020294">
-      <screen x="1360" y="0" width="1680" height="1050" />
-    </state>
-    <state x="1913" y="93" width="574" height="897" key="#PHP/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1617080020294" />
-    <state x="1907" y="310" width="583" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1615742509378">
-      <screen x="1360" y="0" width="1680" height="1050" />
-    </state>
-    <state x="1907" y="310" width="583" height="403" key="#com.intellij.fileTypes.FileTypeChooser/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1615742509378" />
-    <state x="1895" y="27" width="590" height="962" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1615725086824">
-      <screen x="1360" y="0" width="1680" height="1050" />
-    </state>
-    <state x="1895" y="27" width="590" height="962" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1615725086824" />
-    <state x="1933" y="266" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615868987973">
-      <screen x="1360" y="0" width="1680" height="1050" />
-    </state>
-    <state x="1933" y="266" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1615868987973" />
-    <state x="1983" y="296" width="424" height="491" key="FileChooserDialogImpl" timestamp="1620999411362">
-      <screen x="1360" y="0" width="1680" height="1050" />
-    </state>
-    <state x="1983" y="296" width="424" height="491" key="FileChooserDialogImpl/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1620999411362" />
-    <state x="2035" y="461" width="319" height="162" key="NewPhpFileDialog" timestamp="1617595616209">
-      <screen x="1360" y="0" width="1680" height="1050" />
-    </state>
-    <state x="2035" y="461" width="319" height="162" key="NewPhpFileDialog/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1617595616209" />
-    <state x="1685" y="189" width="1289" height="737" key="SettingsEditor" timestamp="1617079779973">
-      <screen x="1360" y="0" width="1680" height="1050" />
-    </state>
-    <state x="1685" y="189" width="1289" height="737" key="SettingsEditor/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1617079779973" />
-    <state x="1864" y="229" key="run.anything.popup" timestamp="1615752473232">
-      <screen x="1360" y="0" width="1680" height="1050" />
-    </state>
-    <state x="1864" y="229" key="run.anything.popup/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1615752473232" />
-    <state x="1863" y="251" width="672" height="678" key="search.everywhere.popup" timestamp="1621065315341">
-      <screen x="1360" y="0" width="1680" height="1050" />
-    </state>
-    <state x="1863" y="251" width="672" height="678" key="search.everywhere.popup/1360.0.1680.1050/0.282.1360.768/3040.282.1366.768@1360.0.1680.1050" timestamp="1621065315341" />
   </component>
 </project>

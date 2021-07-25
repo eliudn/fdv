@@ -15,7 +15,7 @@ class positionController extends Controller
     }
 
     public function get_all(Request $request){
-        if($request->user()->can('all_cargos')){
+        if($request->user()->can('all_cargo')){
 
             ResponseController::set_data(['cargos trabajador'=>position::all()]);
             return ResponseController::response('OK');

@@ -23,8 +23,8 @@ class CreateDocumentPersonTable extends Migration
             $table->foreign('document_person_id')->references('id')->on('types_document_person');
             $table->unsignedBigInteger('person_id');
             $table->foreign('person_id')->references('id')->on('persons');
-            $table->boolean('state');
             $table->timestamps();
+            $table->softDeletes();
 
         });
     }

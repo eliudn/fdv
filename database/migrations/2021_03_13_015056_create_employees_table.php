@@ -16,7 +16,7 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('person_id')->comment('id persona');
-            $table->foreign('person_id')->references('id')->on('persons');
+            $table->foreign('person_id')->references('id')->on('persons')->onDelete('cascade');
             $table->unsignedBigInteger('area_id');
             $table->foreign('area_id')->references('id')->on('area');
             $table->date('date_entry')->comment('fecha de entrada');
@@ -26,8 +26,8 @@ class CreateEmployeesTable extends Migration
             $table->foreign('position_id')->references('id')->on('position');
             $table->unsignedBigInteger('user_id')->comment('id usuario');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->boolean('state')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

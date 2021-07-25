@@ -22,8 +22,8 @@ class CreateSedesTable extends Migration
             $table->string('address');
             $table->unsignedBigInteger('coordinador')->nullable();
             $table->foreign('coordinador')->references('id')->on('users');
-
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
