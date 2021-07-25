@@ -26,6 +26,7 @@ class CreateEmployeesTable extends Migration
             $table->foreign('position_id')->references('id')->on('position');
             $table->unsignedBigInteger('user_id')->comment('id usuario');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->boolean('state')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

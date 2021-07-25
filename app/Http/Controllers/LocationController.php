@@ -30,8 +30,8 @@ class LocationController extends Controller
                 ResponseController::set_messages("Sin dato");
                 return ResponseController::response('BAD REQUEST');
             }
-        $departament->cities;
-        ResponseController::set_data(['Departamento' => $departament]);
+       // $departament->cities;
+        ResponseController::set_data(['Cities' => $departament->cities]);
         //ResponseController::set_data(['Municipios' => $departament->cities]);
         return ResponseController::response('OK');
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sede;
 use App\Models\Area;
+use App\Http\Controllers\ResponseController;
 
 class SedeController extends Controller
 {
@@ -16,19 +17,25 @@ class SedeController extends Controller
     public function getSede(Request $request)
     {
         if($request->user()->can('all_sede')){
-            return response()->json(Sede::all(),200);
+            $sede =Sede::all();
+
+            ResponseController::set_data(['Sede' =>$sede]);
+            return ResponseController::response('OK');
         }
     }
 
 
     public function getSedeId(Request $request, $id){
-        if($request->user()->can('get_sede')) {
+        if($request->user()->can('all_sede')) {
             $sede = Sede::find($id);
             if (is_null($sede)) {
-                return response()->json(['Message' => 'not found'], 404);
+                ResponseController::set_messages('not fount');
+                return ResponseController::response('NO CONTENT');
             }
 
-            return response()->json($sede->areas, 200);
+            ResponseController::set_data(['Sede' =>$sede]);
+            return ResponseController::response('OK');
+
         }
     }
 
@@ -39,7 +46,11 @@ class SedeController extends Controller
 
             $sede = Sede::create($request->all());
 
-            return response($sede,200);
+            ResponseController::set_data(['Sede' =>$sede->id]);
+            ResponseController::set_messages('Sede creada');
+            return ResponseController::response('OK');
+
+
         }
 
     }
@@ -49,10 +60,13 @@ class SedeController extends Controller
             $sede = Sede::find($id);
             if(is_null($sede))
             {
-                return response()->json(['Message'=>'not found'],404);
+                ResponseController::set_messages('not fount');
+                return ResponseController::response('NO CONTENT');
             }
             $sede->update($request->all());
-            return  response($sede,200);
+            ResponseController::set_data(['Sede' =>$sede]);
+            ResponseController::set_messages('Update sede');
+            return ResponseController::response('OK');
         }
 
     }
@@ -67,9 +81,19 @@ class SedeController extends Controller
      */
     public function getArea(Request $request)
     {
-        if($request->user()->can('all_areas')) {
-            return response()->json(Area::all(), 200);
+        if($request->user()->can('all_sede')) {
+
+            $area = Area::all();
+
+            ResponseController::set_data(['Area' =>$area]);
+
+            return ResponseController::response('OK');
+
+
         }
+        ResponseController::set_errors(true);
+        ResponseController::set_messages("USUARIO SIN PERMISO");
+        return ResponseController::response('BAD REQUEST');
     }
 
 
@@ -78,10 +102,13 @@ class SedeController extends Controller
         if($request->user()->can('get_area')) {
             $area = Area::find($id);
             if (is_null($area)) {
-                return response()->json(['Message' => 'not found'], 404);
+                ResponseController::set_messages('not fount');
+                return ResponseController::response('NO CONTENT');
             }
 
-            return response()->json($area::find($id), 200);
+            ResponseController::set_data(['Area' =>$area]);
+
+            return ResponseController::response('OK');
         }
     }
 
@@ -89,7 +116,11 @@ class SedeController extends Controller
 
         if($request->user()->can('add_area')) {
             $area = Area::create($request->all());
-            return response($area, 200);
+
+            ResponseController::set_data(['Area' =>$area]);
+            ResponseController::set_messages('Create area');
+            return ResponseController::response('CREATED');
+
         }
     }
 
@@ -98,10 +129,13 @@ class SedeController extends Controller
         if ($request->user()->can('Update_area')) {
             $area = Area::find($id);
             if (is_null($area)) {
-                return response()->json(['Message' => 'not found'], 404);
+                ResponseController::set_messages('not fount');
+                return ResponseController::response('NO CONTENT');
             }
             $area->update($request->all());
-            return response($area, 200);
+            ResponseController::set_data(['Area' =>$area]);
+            ResponseController::set_messages('Create area');
+            return ResponseController::response('CREATED');
         }
     }
 

@@ -22,6 +22,12 @@ class Employee extends Model
             'user_id',
 
         ];
+
+    public function scopeStateTrue($query) {
+
+        return $query->where('state',true)->first();
+    }
+
     public function person(){
         return $this->belongsTo('App\Models\person');
     }
