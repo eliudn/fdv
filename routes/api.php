@@ -85,7 +85,7 @@ Route::group(['middleware'=>'auth:api'],
                 // Pesona
                 Route::get('person','PersonController@getPerson');
                 Route::get('person/{id}','PersonController@getPersonId');
-                Route::post('Person','PersonController@addPerson');
+                Route::post('person','PersonController@addPerson');
                 Route::put('Person','PersonController@updatePerson');
 
                 //sede area

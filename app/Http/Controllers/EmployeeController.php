@@ -20,7 +20,7 @@ class EmployeeController extends Controller
     public function get_all(Request $request)
     {
         if($request->user()->can('all_empleado')){
-            $employee = Employee::all()->where('state',true);
+            $employee = Employee::all();
 
 
             ResponseController::set_data(['Empleados'=> EmployeeResource::collection($employee)]);
@@ -133,9 +133,9 @@ class EmployeeController extends Controller
                             ]);
 
                     });
-                    ResponseController::set_messages("Empleado actualizado");
+                    ResponseController::set_messages("Empleado  creado");
 
-                    return ResponseController::response('OK');
+                    return ResponseController::response('CREATED');
                 }catch (\Exception $e){
                     ResponseController::set_errors(true);
                     ResponseController::set_messages($e);

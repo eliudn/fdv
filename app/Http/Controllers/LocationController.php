@@ -58,7 +58,7 @@ class LocationController extends Controller
     // Tipo de documentos
     public function getDocumentType(){
 
-        ResponseController::set_data(['Departamentos' => documentType::all()]);
+        ResponseController::set_data(['documentType'=> documentType::all()]);
         return ResponseController::response('OK');
 
     }
