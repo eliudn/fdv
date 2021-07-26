@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call(userSeed::class);
+        $this->call(GeneralDataSeed::class);
         $this->call(departamentSeeder::class);
         $this->call(citySeed::class);
         $this->call(documentTypeSeed::class);
@@ -26,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(roleSeeder::class);
         $this->call(rolesPermissionsSeed::class);
         $this->call(roleUserSeed::class);
+
     }
 }

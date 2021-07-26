@@ -39,4 +39,11 @@ class person extends Model
     public function city(){
         return $this->belongsTo('App\Models\city');
     }
+    public function bloodType (){
+        return $this->belongsTo(GeneralData::class, 'blood_type');
+    }
+
+    public function maritalStatus (){
+        return $this->belongsTo(GeneralData::class, 'marital_status');
+    }
 }

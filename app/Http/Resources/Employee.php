@@ -14,6 +14,12 @@ class Employee extends JsonResource
      */
     public function toArray($request)
     {
+        $sede =$this->area;
+        $sede = $sede->sede;
+        $p =$this->person;
+        $bloodType = $p->bloodType;
+
+        $maritalStatus = $p->maritalStatus;
         return [
             'person'=>[
                 'id'=>$this->person->id,
@@ -25,8 +31,8 @@ class Employee extends JsonResource
                 'document_number'=>$this->person->id_number,
                 'date_issue'=>$this->person->date_issue,
                 'place_issue'=>$this->person->place_issue,
-                'blood_type'=>$this->person->blood_type,
-                'marital_status'=>$this->person->marital_status,
+                'blood_type'=>$bloodType->name,
+                'marital_status'=>$maritalStatus->name,
                 'city'=>$this->person->city->name
             ],
             'employee'=>[
@@ -34,6 +40,7 @@ class Employee extends JsonResource
                 'date_entry'=>$this->date_entry,
                 'salary'=>$this->salary,
                 'position'=>$this->position->name,
+                'sede'=>$sede->name,
                 'area'=>$this->area->name,
                 'user'=>$this->user->email,
 

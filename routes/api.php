@@ -123,5 +123,8 @@ Route::group(['middleware'=>'auth:api'],
                     Route::put('{id}','positionController@update');
                     Route::delete('{id}','positionController@destroy');
                 });
+
+                Route::get('bloodType', 'GeneralDataController@bloodType');
+                Route::get('maritalStatus', 'GeneralDataController@maritalStatus');
             });
 });

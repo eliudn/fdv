@@ -25,8 +25,13 @@ class CreatePersonsTable extends Migration
             $table->date('date_issue')->nullable()->comment('fecha de expedicion')->nullable();
             $table->unsignedBigInteger('place_issue')->nullable()->comment('lugar de expecion');
             $table->foreign('place_issue')->references('id')->on('cities');
-            $table->string('blood_type')->comment('tipo de sangre');
-            $table->string('marital_status')->nullable()->comment('estado civil');
+            $table->unsignedBigInteger('blood_type')->comment('tipo de sangre');
+
+            $table->foreign('blood_type')->on('general_data')->references('id');
+
+            $table->unsignedBigInteger('marital_status')->nullable()->comment('estado civil');
+            $table->foreign('marital_status')->on('general_data')->references('id');
+
             $table->unsignedBigInteger('city_id')->comment('ciudad de recidencia');
             $table->foreign('city_id')->references('id')->on('cities');
             $table->unsignedBigInteger('user_id')->comment('usuario de registro');
