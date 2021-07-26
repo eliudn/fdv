@@ -33,7 +33,7 @@ class SedeController extends Controller
                 return ResponseController::response('NO CONTENT');
             }
 
-            ResponseController::set_data(['Sede' =>$sede]);
+            ResponseController::set_data(['Areas' =>$sede->areas]);
             return ResponseController::response('OK');
 
         }
