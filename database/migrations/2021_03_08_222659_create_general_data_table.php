@@ -19,6 +19,8 @@ class CreateGeneralDataTable extends Migration
             $table->string('slug');
             $table->string('table_iden');
 
+            $table->unique(['name', 'table_iden']);
+
         });
     }
 

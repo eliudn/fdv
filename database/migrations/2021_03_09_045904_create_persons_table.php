@@ -22,7 +22,7 @@ class CreatePersonsTable extends Migration
             $table->string('id_number')->unique()->comment('numero de cc');
             $table->unsignedBigInteger('document_type_id')->comment('tipo de documento');
             $table->foreign('document_type_id')->references('id')->on('document_types');
-            $table->date('date_issue')->nullable()->comment('fecha de expedicion');
+            $table->date('date_issue')->nullable()->comment('fecha de expedicion')->nullable();
             $table->unsignedBigInteger('place_issue')->nullable()->comment('lugar de expecion');
             $table->foreign('place_issue')->references('id')->on('cities');
             $table->string('blood_type')->comment('tipo de sangre');

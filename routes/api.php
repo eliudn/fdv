@@ -116,7 +116,7 @@ Route::group(['middleware'=>'auth:api'],
                 Route::post('employee','EmployeeController@store_all');
 
                 //Cargo
-                Route::group(['prefix'=>'cargo'], function (){
+                Route::group(['prefix'=>'position'], function (){
                     Route::get('','positionController@get_all');
                     Route::get('{id}','positionController@get');
                     Route::post('', 'positionController@store');
