@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Validator;
+
 use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Models\position;
+use Illuminate\Support\Facades\Validator;
 
 class positionController extends Controller
 {
@@ -17,7 +18,7 @@ class positionController extends Controller
     public function get_all(Request $request){
         if($request->user()->can('all_cargo')){
 
-            ResponseController::set_data(['cargos trabajador'=>position::all()]);
+            ResponseController::set_data(['cargosTrabajador'=>position::all()]);
             return ResponseController::response('OK');
         }else{
             ResponseController::set_errors(true);

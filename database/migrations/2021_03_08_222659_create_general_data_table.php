@@ -16,7 +16,7 @@ class CreateGeneralDataTable extends Migration
         Schema::create('general_data', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('table_iden');
 
             $table->unique(['name', 'table_iden']);
