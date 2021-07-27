@@ -359,4 +359,30 @@ class EmployeeController extends Controller
             return ResponseController::response('BAD REQUEST');
         }
     }
+
+    public function delete (Request $request, $id){
+
+        if($request->user()->can('delete_empleado')){
+
+            $employee = Employee::find($id);
+
+            if ($employee){
+
+                $employee->delete();
+
+            }
+            ResponseController::set_messages("Empleado eliminado");
+            return ResponseController::response('OK');
+        }
+        ResponseController::set_errors(true);
+        ResponseController::set_messages("USUARIO SIN PERMISO");
+        return ResponseController::response('BAD REQUEST');
+    }
+
+    public function showDelete (){
+
+        $employee =Employee::all()->withTrashed();
+        ResponseController::set_data(['empleado'=>$employee]);
+        return ResponseController::response('OK');
+    }
 }

@@ -28,12 +28,16 @@ class Employee extends JsonResource
                 'last_name1'=>$this->person->last_name1,
                 'last_name2'=>$this->person->last_name2,
                 'document_type'=>$this->person->document_type->name,
-                'document_number'=>$this->person->id_number,
+                'documen_type_id'=>$this->person->document_type_id,
+                'id_number'=>$this->person->id_number,
                 'date_issue'=>$this->person->date_issue,
                 'place_issue'=>$this->person->place_issue,
                 'blood_type'=>$bloodType->name,
+                'blood_type_id'=>$this->person->blood_type,
                 'marital_status'=>$maritalStatus->name,
-                'city'=>$this->person->city->name
+                'marital_status_id'=>$this->person->marital_status,
+                'city'=>$this->person->city->name,
+                'city_id'=>$this->person->city_id
             ],
             'employee'=>[
                 'id'=>$this->id,
@@ -41,7 +45,9 @@ class Employee extends JsonResource
                 'salary'=>$this->salary,
                 'position'=>$this->position->name,
                 'sede'=>$sede->name,
+                'sede_id'=>$sede->id,
                 'area'=>$this->area->name,
+                'area_id'=>$this->area_id,
                 'user'=>$this->user->email,
 
                 'state'=>$this->state,

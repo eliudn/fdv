@@ -112,9 +112,10 @@ Route::group(['middleware'=>'auth:api'],
                 Route::post('Employees','EmployeeController@store');
                 Route::put('employeeu/{id}','EmployeeController@update__all');
                 Route::patch('employee/{id}','EmployeeController@update');
+                Route::delete('employee/{id}', 'EmployeeController@delete');
 
                 Route::post('employee','EmployeeController@store_all');
-
+                Route::get('employee/delete','EmployeeController@showDelete');
                 //Cargo
                 Route::group(['prefix'=>'position'], function (){
                     Route::get('','positionController@get_all');
@@ -122,6 +123,7 @@ Route::group(['middleware'=>'auth:api'],
                     Route::post('', 'positionController@store');
                     Route::put('{id}','positionController@update');
                     Route::delete('{id}','positionController@destroy');
+
                 });
 
                 Route::get('bloodType', 'GeneralDataController@bloodType');
