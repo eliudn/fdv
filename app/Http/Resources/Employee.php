@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Employee extends JsonResource
@@ -28,16 +29,17 @@ class Employee extends JsonResource
                 'last_name1'=>$this->person->last_name1,
                 'last_name2'=>$this->person->last_name2,
                 'document_type'=>$this->person->document_type->name,
-                'documen_type_id'=>$this->person->document_type_id,
+                'document_type_id'=>$this->person->document_type_id,
                 'id_number'=>$this->person->id_number,
                 'date_issue'=>$this->person->date_issue,
                 'place_issue'=>$this->person->place_issue,
-                'blood_type'=>$bloodType->name,
-                'blood_type_id'=>$this->person->blood_type,
-                'marital_status'=>$maritalStatus->name,
-                'marital_status_id'=>$this->person->marital_status,
+
+                'blood_type'=>$this->person->blood_type,
+
+                'marital_status'=>$this->person->marital_status,
                 'city'=>$this->person->city->name,
-                'city_id'=>$this->person->city_id
+                'city_id'=>$this->person->city_id,
+                'departament_id'=>$this->person->city->departament_id ,
             ],
             'employee'=>[
                 'id'=>$this->id,
