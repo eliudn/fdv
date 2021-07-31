@@ -86,7 +86,7 @@ class EmployeeController extends Controller
                 "last_name2"=>"string",
                 "id_number"=>"required|numeric",
                 "document_type_id"=>"required|numeric",
-                "blood_type"=> "required|string",
+                "blood_type"=> "required|numeric",
                 "city_id"=>"required|numeric",
 
                 "area_id"=>"required|numeric",
@@ -236,8 +236,9 @@ class EmployeeController extends Controller
 
 
 
-    public function update($id,Request $request){
-        if($request->user()->can('update_personaEmpleado')){
+    public function update (Request $request,$id){
+
+        if($request->user()->can('update_empleado')){
             $employee = Employee::find($id);
             if(!$employee)
             {
@@ -296,12 +297,9 @@ class EmployeeController extends Controller
                     $person->date_issue=$date_issue;
                     $bandera=true;
                 }
-                if($place_issue!=null || $place_issue){
-                    $person->place_issue=$place_issue;
-                    $bandera=true;
-                }
+
                 if($blood_type!=null || $blood_type!=''){
-                    $person->blood_type=$place_issue;
+                    $person->blood_type= $blood_type;
                     $bandera=true;
                 }
                 if($marital_status!= null || $marital_status!=''){
@@ -352,7 +350,7 @@ class EmployeeController extends Controller
                     return ResponseController::response('NOT MODIFIED');
 
                 }
-            }
+              }
         }else{
             ResponseController::set_errors(true);
             ResponseController::set_messages("USUARIO SIN PERMISO");
